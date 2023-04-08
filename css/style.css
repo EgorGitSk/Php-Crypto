@@ -1,0 +1,1275 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    font-family: 'Bellefair', sans-serif;
+}
+.cookies-container{
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    background-color: grey;
+    color: white;
+    font-size: 1.5rem;
+    padding: 32px 32px;
+    transition: 0.5s ease;
+    bottom: 0;
+    display: none;
+    z-index: 999;
+}
+.cookies-container.active{
+    display: block;
+    transition: 0.5s ease;
+}
+.cookies-container .cookie-btn{
+    font-size: 1.3rem;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.cookies-container .cookie-btn:hover{
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+html {
+	scroll-behavior: smooth;
+}
+section {
+    scroll-margin-top: 5rem;
+  }
+
+::-webkit-scrollbar {
+    display: none;
+  }
+.go-back{
+    font-size: 1.3rem;
+    align-self: center;
+}
+.bg-black{
+    background-color: black;
+}
+header{
+    top: 0;
+    position: sticky;
+    background-color: black;
+    z-index: 99;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px 15px 40px;
+}
+.nav-menu{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+.nav-menu li{
+    list-style: none;
+}
+.logo{
+    color: white;
+    font-size: 2.5rem;
+    letter-spacing: 6px;
+}
+
+.nav-menu li a{
+    list-style: none;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: white;
+    list-style: none;
+    transition: 1s ease;
+}
+.nav-menu li a:hover{
+    text-decoration: underline;
+    transition: 0.8s ease;
+}
+.lang a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+.nav-menu .lang a:hover{
+    text-decoration: underline;
+    color: white;
+}
+.burger-menu{
+    color: white;
+    display: none;
+}
+/**Main**/
+.main{
+    width: 100%;
+    background: black;
+    background-image: url('../img/2.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top right;
+    display: flex;
+    padding-left: 10%;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    color: white;
+    overflow-y: auto;
+    perspective: 10px;
+}
+.main .intro{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  
+}
+.main .intro h1{
+    letter-spacing: 4px;
+    font-size: 3rem;
+    font-weight: 900;
+}
+.main .intro h2{
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+.main .intro a{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    font-weight: 900;
+    font-size: 1.5rem;
+    max-width: 300px;
+    padding: 15px 40px;
+    border-radius: 20px;
+    border-color: none;
+    transition:0.9s ease;
+    
+}
+.main a:hover{
+    color: white;
+    background-color: #110C11;
+    transition:0.5s ease;
+}
+
+.crypto{
+
+    display: flex;
+    flex-direction: column;
+    
+}
+.crypto .name{
+    margin-top: 10px;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: white;
+    align-self: center;
+    display: block;
+}
+
+/**CRYPTO PRICELIST**/
+.course-price{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.course-price .name{
+    margin-top: 10px;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: white;
+    align-self: center;
+    display: block;
+    margin-bottom:20px;
+}
+
+.course-price .table-price table {
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 0;
+    width: 100%;
+    color:white;
+  }
+  
+
+  
+  .course-price .table-price  table tr {
+    background-color: black;
+    border: 1px solid white;
+    font-size: 1.5rem;
+    padding: .35em;
+  }
+  
+  .course-price .table-price table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+  }
+  
+  .course-price .table-price table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  @media screen and (max-width: 600px) {
+    .course-price .table-price table {
+      border: 0;
+    }
+  
+    .course-price .table-price table caption {
+      font-size: 1.3em;
+    }
+    
+    .course-price .table-price table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    .course-price .table-price table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    .course-price .table-price table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    .course-price .table-price table td::before {
+    
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .course-price .table-price table td:last-child {
+      border-bottom: 0;
+    }
+  }
+  
+  
+  
+  
+/**Crypto presentation**/
+.item{
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+.item img{
+    width: 30%;
+    height: auto;
+}
+
+.item .present ul{
+    top: 0;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    padding: 20px 20px 40px 20px;
+}
+.item .present button{
+    background-color: #000;
+    color: white;
+    font-size: 2.5rem;
+    border: none;
+    transition: 1s ease;
+    border-bottom: 0px solid darkgray;
+}
+.item .present button:not(.dontHover):hover {
+    border-bottom: 2px solid darkgray;
+    transition: 1s ease;
+}
+
+
+.item .present .active{
+
+    border-bottom: 3px solid white;
+}
+
+
+.item .present .text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: justify;
+    overflow:hidden;
+
+}
+
+.item .present .text h1{
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+.item .present .text p{
+    margin: 10px;
+}
+/**Crypto Prices**/
+.crypto-prices{
+    display: flex;
+    flex-direction: column;
+}
+.crypto-prices .name{
+    margin-top: 10px;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: white;
+    align-self: center;
+    display: block;
+}
+.crypto-prices .item{
+    display: flex;
+    text-align: center;
+}
+
+/**end crypto**/
+/************************/
+/*****FAQ section start**/
+/************************/
+.FAQ{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.FAQ .name{
+    margin-top: 50px;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: white;
+    align-self: center;
+    display: block;
+}
+.FAQ .accordion{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
+.FAQ .content{
+    padding: 20px 20px 20px 20px;
+    position: relative;
+    margin: 10px 20px;
+
+}
+.FAQ .content .head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px grey solid;
+}
+.FAQ .content .head h1{
+    font-size: 2rem;
+    margin: 10px 10px;
+    display: inline-block;
+}
+.FAQ .content .head i{
+    font-size: 1rem;
+    margin: 20px 10px;
+    display: inline-block;
+}
+.FAQ .content .text{
+    height: 0;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s ease;
+    font-size: 1.2rem;
+}
+.FAQ .content.faq-active .text{
+    transition: 0.5s ease;
+    height: 50px;
+    max-height: 300px;
+}
+/************************/
+/*****FAQ section end****/
+/************************/
+/********************************************************/
+/************************/
+/**Footer section start**/
+/************************/
+footer{
+    width: 100%;
+    height: 100px;
+    border-top: 2px solid #3E3E3E;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+}
+footer .foot-main{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+footer .foot-main .info{
+    width: 20%;
+}
+footer .foot-main .important{
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+footer .foot-main li{
+    
+    font-size: 1.2rem;
+    list-style: none;
+}
+
+footer .foot-main a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+}
+footer .foot-main a:hover{
+    font-size: 1.2rem;
+    text-decoration: underline;
+    color: white;
+}
+footer .social{
+
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    align-self: center;
+
+}
+
+footer .social li{
+    display: inline;
+    font-size: 1.2rem;
+    list-style: none;
+    margin-left: 10px;
+}
+footer .social li a{
+    color: white;
+    text-decoration: none;
+    transition: 0.5s ease;
+}
+footer .social li a:hover{
+    color: gold;
+    transition: 0.5s ease;
+}
+footer .credits{
+    align-self: center;
+    color: white;
+    padding: 10px 20px 20px 20px;
+}
+footer .logo{
+    padding-top: 20px;
+    color: white;
+    font-size: 1.5rem;
+    align-self: center;
+}
+/************************/
+/***Footer section end***/
+/************************/
+/**Contact page**/
+.contact-bg{
+    background-image: url('../img/contact-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.contact-head{
+    margin-top: 70px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.contact-head h1{
+    color: white;
+    font-size: 2rem;
+}
+.contact-head h2{
+    color: white;
+    font-size: 1.5rem;
+}
+.center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10%;
+}
+.center .form{
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+.center .contact-form .form-row{
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: row;
+}
+.center .contact-form .form-row input[type="text"],.form-row input[type="email"],.form-row input[type="phone"]{
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    border-bottom: 5px solid #3E1F92;
+    font-size: 1.5rem;
+    margin: 10px;
+    width: 50%;
+    border-radius: 10px;
+    transition: 0.5s ease;
+  }
+  .center .contact-form .form-row input[type="text"]:focus,.form-row input[type="email"]:focus,.form-row input[type="phone"]:focus{
+    border-bottom: 5px solid gold;
+    transition: 0.5s ease;
+  }
+  .center .contact-form  textarea{
+    font-size: 1.2rem;
+    border-bottom: 5px solid #3E1F92;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    border-radius: 10px;
+    height: 150px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    transition: 0.5s ease;
+  }
+  .center .contact-form  textarea:focus{
+    border-bottom: 5px solid gold;
+    transition: 0.5s ease;
+  }
+  .center .contact-form input[type="checkbox"]{
+    margin-bottom: 15px;
+  }
+  .center .contact-form input[type="submit"]{
+  border: 2px solid #3E1F92;
+  background-color: white;
+  border-radius: 20px;
+  width: 50%;
+  color: black;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  margin-left: auto;
+
+  align-self: center;
+  transition: 0.5s ease;
+  }
+  .center .contact-form input[type="submit"]:hover{
+    background-color: #3E1F92;
+    transition: 0.5s ease;
+    color: white;
+  }
+.center .contact-info{
+    background-color: #A4ACD1;
+    width: 30%;
+    height: 60vh;
+    padding: 30px;
+    border-radius: 20px;
+    margin-left: 20px;
+    color: black;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.center .contact-info .text{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.center .contact-info .text h2{
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.center .contact-info .text p{
+
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.center .contact-info li{
+    list-style: none;
+    padding: 10px;
+    align-self: center;
+    font-size: 1.3rem;
+}
+.center .contact-info .social li{
+    padding-top: 20px;
+    display: inline;
+    font-size: 1.5rem;
+    list-style: none;
+    margin-left: 10px;
+    transition: 0.5s ease;
+}
+.center .contact-info li a{
+    color: black;
+    text-decoration: none;
+}
+.center .contact-info .social li a{
+    color: black;
+    text-decoration: none;
+    transition: 1s ease;
+}
+.center .contact-info .social li a:hover{
+    color: gold;
+    transition: 1s ease;
+}
+/**Main Contact Section**/
+
+.questions .block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    margin-bottom: 40px;
+}
+.questions .block .text{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+.questions .block .link{
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    background-color: white;
+    padding: 40px;
+    width: 60%;
+    height: 20vh;
+}
+.questions .block .link .text{
+    align-items: flex-start;
+    color: black;
+    text-align: left;
+    font-size: 1.5rem;
+}
+.questions .block .link .text h2{
+    font-size: 1.3rem;
+}
+.questions .block .link a{
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: auto;
+    background-color: black;
+    padding: 20px;
+    color: white;
+    transition: 0.7s ease;
+}
+.questions .block .link a:hover{
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    transition: 0.7s ease;
+}
+.questions .block .link i{
+    font-size: 2.8rem;
+    margin-right: 20px;
+}
+@media only screen and (max-width:1500px){
+    .item .present .text p{
+        font-size: 2.5rem;
+
+    }
+}
+
+/**Sign Pages**/
+.sign-bg{
+    background-color: #666666;
+    background-image: url('../img/signup-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 50vw 100vh;
+
+}
+
+.sign{
+    width: 50vw;
+    height: 100vh;
+    margin-left: auto;
+    background-color: #666666;
+    display: flex;
+    align-items: center;
+}  
+.sign .close-page{
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    font-size:1.5rem;
+    align-items: center;
+    align-self: flex-start;
+    margin: 20px;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid black;
+    transition: 0.5s ease;
+    position: absolute;
+}
+.sign .close-page a{
+    color: black;
+    text-decoration: none;
+}
+.sign .close-page:hover{
+    font-size:1.8rem;
+    margin: 10px;
+    padding: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    transition: 0.5s ease;
+}
+.sign .change-page{
+
+    text-align: center;
+    font-size: 1.5rem;
+}
+.sign .change-page a{
+    padding-top: 10px;
+    color: white;
+    text-decoration: none;
+}.sign .change-page a:hover{
+    padding-top: 10px;
+    color: white;
+    text-decoration: underline;
+}
+.signup-form{
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    padding-block: 2rem;
+    width: min(95%, 70rem);
+    margin-inline: auto;
+    gap: 2rem;
+}
+.signup-form .error{
+    color: red;
+    font-size: 1.5rem;
+    padding-left: 20px;
+}
+@media (min-width:50em){
+    .signup-form{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .grid-span-2{
+        grid-column: span 2;
+    }
+    .grid-span-3{
+        grid-column: span 3;
+    }
+}
+.head{
+    text-align: center;
+    margin-top: 40px;
+}
+.head h1{
+    color: white;
+    font-size: 2rem;
+    
+}
+.head h2{
+    color: white;
+    font-size: 1.5rem;
+}
+.signup-form .input-text input[type="text"],input[type="email"],input[type="password"]{
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    border-bottom: 5px solid #3E1F92;
+    font-size: 1.5rem;
+    margin: auto;
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    
+}
+.signup-form .input-text input[type="text"]:focus,.input-text input[type="email"]:focus,.input-text input[type="password"]:focus{
+    border-bottom: 5px solid #3E1F92;
+    transition: 0.5 ease;
+}
+.signup-form .input-submit input[type="submit"]{
+    border: 2px solid #3E1F92;
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    color: black;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    transition: 0.5s ease;
+    }
+    .signup-form .input-submit input[type="submit"]:hover{
+        color: white;
+        background-color: #3E1F92;
+        transition: 0.5s ease;
+    }
+/************************/
+/**Testimonial section**/
+/**********************/
+/**Testimonial blocks background start**/
+  .bg-one{
+    background: #F2B25C;
+  }
+  .bg-two{
+    background: #F06D65;
+  }
+  .bg-three{
+    background: #59C0A2;
+  }
+  
+  .bg-four{
+    background: #54C1E3;
+  }
+/**Testimonial blocks background end**/
+.testimonial-section{
+  display: grid;
+  padding-block: 2rem;
+  width: min(95%, 70rem);
+  margin-inline: auto;
+  gap: 1.5rem;
+}
+
+@media (min-width:50em){
+    .testimonial-section{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .grid-span-2{
+        grid-column: span 2;
+    }
+    .grid-span-3{
+        grid-column: span 3;
+    }
+}
+.testimonial-section .name{
+    margin-top: 10px;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: white;
+    align-self: center;
+    display: block;
+}
+.testimonial-section .testimonial{
+    color: black;
+    font-size: 0.8125rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.testimonial-section .flex{
+    display: flex;
+}
+.testimonial-section .testimonial img {
+    width: 100%;
+    
+    border-radius: 50%;
+    display: block;
+  }
+  
+  .testimonial-section  .testimonial .name {
+    
+    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  
+  .testimonial-section .testimonial .position {
+    padding-left: 10px;
+    font-size: 0.6875rem;
+    opacity: 0.5;
+  }
+  .testimonial-section .testimonial p{
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+/***************************/
+/**Testimonial section end**/
+/***************************/
+@media only screen and (max-width:1200px){
+    .item .present button{
+        background-color: #000;
+        color: white;
+        font-size: 2rem;
+        border: none;
+    }
+
+}
+
+@media only screen and (max-width:950px){
+    .sign-bg{
+        background-image: none;
+    }
+    
+    .sign{
+        width: 100vw;
+        height: 100vh;
+    } 
+    .questions .block .link{
+        flex-direction: column;
+        height: auto;
+    }
+    .nav-menu{
+        display: flex;
+        justify-content: space-around;
+        width: 70%;
+    }
+    .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10%;
+    }
+    .center .contact-info{
+        width: 70%;
+        height: 40vh;
+        padding: 30px;
+        margin: 20px;
+        align-self: center;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .logo{
+        color: white;
+        font-size: 1.5rem;
+        letter-spacing: 6px;
+    }
+    
+    .list-menu li{
+        display: inline-block;
+        padding: 10px 10px;
+    }
+    
+    .main{
+        padding-left: 0px;
+        display: flex;
+        flex-direction: row;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+
+    .item .present .text h1{
+        align-self: center;
+        font-size: 2.5rem;
+    }
+    .item .present .text h1 span{
+        align-self: center;
+        font-size: 1.5rem;
+    }
+    .item{
+        padding: 20px 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+    }
+    .item .present .text p{
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+@media screen and (max-width:768px){
+    .sign-bg{
+        background-image: none;
+    }
+    
+    .sign{
+        width: 100vw;
+        height: 100%;
+    } 
+    .course-price .table-price  table tr {
+        font-size: 1rem;
+      }
+    .course-price .name{
+        margin-top: 10px;
+        font-size: 2rem;
+        letter-spacing: 4px;
+        color: white;
+        align-self: center;
+        display: block;
+    }
+    .FAQ .content .head h1{
+        font-size: 1.5rem;
+        margin: 10px 10px;
+        display: inline-block;
+    }
+    .FAQ .content .head i{
+        font-size: 1rem;
+        margin: 20px 10px;
+        display: inline-block;
+    }
+    .FAQ .content{
+        padding: 20px 10px 20px 10px;
+        position: relative;
+        margin: 10px 20px;
+    
+    }
+    .questions .block .link{
+        width: 80%;
+    }
+    .crypto .name{
+        margin-top: 10px;
+        font-size: 3rem;
+        letter-spacing: 4px;
+        color: white;
+        align-self: center;
+        display: block;
+    }
+    .questions .block .link{
+        flex-direction: column;
+        height: auto;
+    }
+    .center .contact-info .text h2{
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .center .contact-info .text p{
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    .center .contact-info li{
+        list-style: none;
+        padding: 10px;
+        align-self: center;
+        font-size: 1rem;
+    }
+    .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10%;
+    }
+    .center .contact-info{
+        width: 90%;
+        height: 60vh;
+        padding: 30px;
+        margin: 20px;
+        
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .main{
+        height: 50vh;
+    }
+    footer .foot-main .info{
+        width: 40%;
+    }
+    header{
+        width: 100%; 
+        position: fixed; 
+        z-index: 999;
+    }
+    html,body{
+        overflow-x: hidden;
+    }
+
+    .nav-menu{
+        display: flex;
+        justify-content: center;
+        gap: 10%;
+        flex-direction: column;
+        flex-flow:column wrap;
+        flex-wrap: wrap;
+        align-items: center;
+        position: absolute;
+        right: 0px;
+        top: 8vh;
+        height: 92vh;
+        background-color: black;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        font-size: 2rem;
+    }
+
+    .burger-menu{
+        font-size: 20px;
+        display: block;
+    }
+    .nav-menu .lang a{
+        display: none;
+    }
+    .item .present .text h1{
+        align-self: center;
+        font-size: 2.5rem;
+    }
+    .item .present .text p{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .item{
+        padding: 20px 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+    }
+    
+    .main .intro h1{
+        margin-top: 10px;
+        letter-spacing: 4px;
+        font-size: 3.5rem;
+        font-weight: 900;
+    }
+    .main .intro h2{
+        font-size: 2.5rem;
+        font-weight: 100;
+    }
+    .item .present button{
+        background-color: #000;
+        color: white;
+        font-size: 2rem;
+        border: none;
+    }
+}
+@media screen and (max-width:600px){
+    .sign{
+        width: 100vw;
+        height: 100vh;
+    } 
+    
+    .nav-menu li{
+        list-style: none;
+        font-size: 1.2rem;
+    }
+ 
+    .crypto .name{
+        margin-top: 10px;
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+        color: white;
+        align-self: center;
+        display: block;
+    }
+    
+    .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10%;
+    }
+    .main{
+        height: 50vh;
+    }
+    .main .intro{
+        margin-top: 40px;
+        text-align: center;
+      }
+    .main .intro h1{
+        letter-spacing: 4px;
+        font-size: 2.5rem;
+        font-weight: 900;
+    }
+    .main .intro h2{
+        font-size: 1.5rem;
+        font-weight: 100;
+        margin-bottom: 30px;
+    }
+    .item .present button{
+        background-color: #000;
+        color: white;
+        font-size: 1.5rem;
+        border: none;
+    }
+}
+@media screen and (max-width:420px){
+    .sign{
+        width: 100vw;
+        height: 100%;
+    } 
+    .nav-menu li{
+        list-style: none;
+        font-size: 1rem;
+    }
+    .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10%;
+    }
+    .center .contact-info{
+        width: 90%;
+        height: auto;
+        padding: 30px;
+        margin: 20px;
+        
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .main{
+        height: 50vh;
+    }
+    .main .intro h1{
+        letter-spacing: 4px;
+        font-size: 2.5rem;
+        font-weight: 900;
+    }
+    .main .intro h2{
+        font-size: 1.5rem;
+        font-weight: 100;
+    }
+    .item .present button{
+        background-color: #000;
+        color: white;
+        font-size: 1rem;
+        border: none;
+    }
+    .item .present .text h1{
+        align-self: center;
+        font-size: 2rem;
+    }
+    .item .present .text p{
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    
+}
+
+.nav-active{
+ 
+    overflow: hidden;
+    transform: translateX(0%);
+
+}
