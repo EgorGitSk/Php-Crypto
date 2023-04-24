@@ -16,13 +16,13 @@ session_start();
                     <h1>Sign In To Crypto</h1>
                 </div>
                 <div class="input-text">
-                <input type="email" id="email" name="email" placeholder="Email:" >
+                <input type="text" id="email" name="username" placeholder="Email or Username:" >
                 </div>  
                 <div class="input-text">
                 <input type="password" id="password" name="pwd" placeholder="password:" >
                 </div>
                 <div class="input-submit">
-                <input type="submit" value="Sign in">
+                <input type="submit" name="submit" value="Sign in">
                 </div>
                 <div class="change-page">
                     <a href="signup.php">Sign Up</a>

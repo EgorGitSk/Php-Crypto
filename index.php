@@ -17,7 +17,7 @@ include_once "parts/header.php";
                 if(isset($_SESSION["username"])){
 
                     ?>
-                    <p>Hi <?php echo $_SESSION["username"]; ?>!</p><br>
+                    <h2>Hi <?php echo $_SESSION["username"]; ?>!</h2><br>
                     <a href="includes/logout.inc.php">Logout</a>
                     <?php
                 }else{

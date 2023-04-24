@@ -24,7 +24,7 @@
             }
 
             $result = true;
-            if($sql->rowCount() > 0){
+            if($sql->rowCount() == 0){
                 $result = false;
             }
 

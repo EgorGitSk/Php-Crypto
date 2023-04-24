@@ -35,7 +35,7 @@ session_start();
                     <div class="error"></div>
                 </div>
                 <div class="input-submit">
-                <input type="submit" value="Sign Up">
+                <input type="submit" name="submit" value="Sign Up">
                 </div>
                 <div class="change-page">
                     <a href="signin.php">Sign In</a>
