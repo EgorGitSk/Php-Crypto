@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 include_once "parts/head.php";
+session_start();
 ?>
 <body class="bg-black">
 <?php
@@ -12,7 +13,20 @@ include_once "parts/header.php";
 
                 <h1>Make your first step</h1>
                 <h2>And discover a whole new world</h2>
-                <a href="signup.php">Start learning</a>
+                <?php
+                if(isset($_SESSION["username"])){
+
+                    ?>
+                    <p>Hi <?php echo $_SESSION["username"]; ?>!</p><br>
+                    <a href="includes/logout.inc.php">Logout</a>
+                    <?php
+                }else{
+                    ?>
+                    <a href="signup.php">Start learning</a>
+                    <?php
+                }
+                ?>
+
 
             </div>
         </section>

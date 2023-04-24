@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 include_once "parts/head.php";
+session_start();
 ?>
 <body class="sign-bg">
     <section class="sign">
@@ -10,15 +11,15 @@ include_once "parts/head.php";
                 <i class="fa-solid fa-xmark"></i>
                 </a>
             </div>
-            <form action="thank.php" id="signin-form" class="signup-form">
+            <form action="includes/login.inc.php" id="signin-form" class="signup-form" method="POST">
                 <div class="head grid-span-2">
                     <h1>Sign In To Crypto</h1>
                 </div>
                 <div class="input-text">
-                <input type="email" id="email" placeholder="Email:" >
+                <input type="email" id="email" name="email" placeholder="Email:" >
                 </div>  
                 <div class="input-text">
-                <input type="password" id="password" placeholder="password:" >
+                <input type="password" id="password" name="pwd" placeholder="password:" >
                 </div>
                 <div class="input-submit">
                 <input type="submit" value="Sign in">

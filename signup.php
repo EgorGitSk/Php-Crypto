@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 include_once "parts/head.php";
+session_start();
 ?>
 <body class="sign-bg">
     <section class="sign">
@@ -11,26 +12,27 @@ include_once "parts/head.php";
                 </a>
             </div>
             
-            <form action="thank.php" class="signup-form" id="signup-form">
+            <form action="includes/signup.inc.php" class="signup-form" id="signup-form" method="POST">
                 <div class="head grid-span-2">
                     <h1>Sign Up To Crypto</h1>
                     <h2>And Start Learning</h2>
                 </div>
                 <div class="input-text ">
-                <input type="text" id="name" placeholder="Name:" required>
+                <input type="text" id="username" name="username" placeholder="Name:" required>
                 <div class="error"></div>
                 </div>
-                <div class="input-text">
-                <input type="text" id="surname" placeholder="Surname:" required>
-                <div class="error"></div>
                 </div>
                 <div class="input-text">
-                <input type="email" id="email" placeholder="Email:" required>
+                <input type="email" id="email" name="email" placeholder="Email:" required>
                 <div class="error"></div>
                 </div>  
                 <div class="input-text">
-                <input type="password" id="password" placeholder="password:" required>
+                <input type="password" id="password" name="pwd" placeholder="password:" required>
                 <div class="error"></div>
+                </div>
+                <div class="input-text">
+                    <input type="password" id="password" name="rpwd" placeholder="password repeat:" required>
+                    <div class="error"></div>
                 </div>
                 <div class="input-submit">
                 <input type="submit" value="Sign Up">
