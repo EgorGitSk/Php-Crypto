@@ -1,5 +1,10 @@
 ﻿<!DOCTYPE html>
-
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: index.php?error=none");
+}else {
+?>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -14,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title></title>
 </head>
@@ -31,7 +36,7 @@
         <div class="header__container">
 
 
-            <a href="{{url_for('core.index')}}" class="header__logo">CRYPTO</a>
+            <a href="index.php" class="header__logo">CRYPTO</a>
 
             <div class="header__search">
 
@@ -48,14 +53,14 @@
     <div class="nav" id="navbar">
         <nav class="nav__container">
             <div>
-                <a href="{{url_for('core.index')}}" class="nav__link nav__logo">
+                <a href="index.php" class="nav__link nav__logo">
                     <i class='bx bx-bitcoin' ></i>
                     <span class="nav__logo-name">CRYPTO</span>
                 </a>
 
                 <div class="nav__list">
                     <div class="nav__items">
-                        <a href="{{url_for('core.index')}}" class="nav__link active">
+                        <a href="index.php" class="nav__link active">
                             <i class="fas fa-home"></i>
                             <span class="nav__name">Home</span>
                         </a>
@@ -210,8 +215,11 @@
     </main>
 
     <!--========== MAIN JS ==========-->
-    <script src="main-courses.js"></script>
-    <script src="app.js"></script>
-    <script src="lessons.js"></script>
+    <script src="js/main-courses.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/lessons.js"></script>
 </body>
 </html>
+<?php
+}
+?>

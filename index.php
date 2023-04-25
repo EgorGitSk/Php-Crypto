@@ -18,7 +18,7 @@ include_once "parts/header.php";
 
                     ?>
                     <h2>Hi <?php echo $_SESSION["username"]; ?>!</h2><br>
-                    <a href="includes/logout.inc.php">Logout</a>
+                    <a href="courses.php">Study</a>
                     <?php
                 }else{
                     ?>

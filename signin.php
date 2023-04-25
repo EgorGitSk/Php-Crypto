@@ -3,6 +3,9 @@
 <?php
 include_once "parts/head.php";
 session_start();
+if (isset($_SESSION["username"])) {
+    header("Location: index.php?error=none");
+}else {
 ?>
 <body class="sign-bg">
     <section class="sign">
@@ -31,3 +34,6 @@ session_start();
     <script src="js/form.js"></script>
 </body>
 </html>
+<?php
+}
+?>
