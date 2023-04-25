@@ -3,7 +3,7 @@
 <?php
 include_once "parts/head.php";
 session_start();
-if (isset($_SESSION["username"])) {
+if (isset($_SESSION["name"])) {
     header("Location: index.php?error=none");
 }else {
 ?>
@@ -19,7 +19,7 @@ if (isset($_SESSION["username"])) {
                     <h1>Sign In To Crypto</h1>
                 </div>
                 <div class="input-text">
-                <input type="text" id="email" name="username" placeholder="Email or Username:" >
+                <input type="text" id="email" name="name" placeholder="Email or name:" >
                 </div>  
                 <div class="input-text">
                 <input type="password" id="password" name="pwd" placeholder="password:" >

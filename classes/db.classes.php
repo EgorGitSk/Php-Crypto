@@ -1,6 +1,6 @@
 <?php
     class Db{
-        protected function connect(){
+        public function connect(){
             try{
                 $host = "localhost";
                 $port = 3306;

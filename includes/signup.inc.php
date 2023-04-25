@@ -2,7 +2,8 @@
 
     if(isset($_POST['submit'])){
     //Grabbing the data
-    $username = $_POST['username'];
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
     $rpwd = $_POST['rpwd'];
@@ -11,7 +12,7 @@
     include "../classes/db.classes.php";
     include "../classes/signup.classes.php";
     include "../classes/signup-contr.classes.php";
-    $signup = new SignUpController( $username, $email, $pwd, $rpwd);
+    $signup = new SignUpController( $name,$surname, $email, $pwd, $rpwd);
 
     $signup->SignUpUser();
 

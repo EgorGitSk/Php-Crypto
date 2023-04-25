@@ -1,12 +1,12 @@
 <?php
     class SignUp extends Db{
 
-        public function SetUser($username,$email,$pwd){
-            $sql = $this->connect()->prepare("INSERT INTO `users` (`username`, `password`, `email`) VALUES (?, ?, ?)");
+        public function SetUser($name,$surname,$email,$pwd){
+            $sql = $this->connect()->prepare("INSERT INTO `users` (`name`,`surname`, `password`, `email`) VALUES (?,?, ?, ?)");
 
             $hashed = password_hash($pwd, PASSWORD_DEFAULT);
 
-            if(!$sql->execute(array($username,$hashed,$email))){
+            if(!$sql->execute(array($name,$surname,$hashed,$email))){
                 $sql = null;
                 header("Location: ../index.php?error=fail");
                 exit();
@@ -15,7 +15,7 @@
             $sql = null;
         }
         protected function checkEmail($email){
-            $sql = $this->connect()->prepare("SELECT username FROM users WHERE email = ?;");
+            $sql = $this->connect()->prepare("SELECT name FROM users WHERE email = ?;");
 
             if(!$sql->execute(array($email))){
                 $sql = null;
@@ -31,10 +31,10 @@
 
             return $result;
         }
-        protected function checkName($username){
-            $sql = $this->connect()->prepare("SELECT username FROM users WHERE username = ?;");
+        protected function checkName($name){
+            $sql = $this->connect()->prepare("SELECT name FROM users WHERE name = ?;");
 
-            if(!$sql->execute(array($username))){
+            if(!$sql->execute(array($name))){
                 $sql = null;
                 header("Location: ../index.php?error=fail");
                 exit();

@@ -1,12 +1,12 @@
 <?php
 
 class LoginController extends Login {
-    private string $username;
+    private string $name;
     private string $pwd;
 
 
-    public function __construct(string $username,string $pwd){
-        $this->username=$username;
+    public function __construct(string $name,string $pwd){
+        $this->name=$name;
         $this->pwd=$pwd;
     }
     public function loginUser(){
@@ -15,11 +15,11 @@ class LoginController extends Login {
             exit();
         }
 
-        $this->getUser($this->username,$this->pwd);
+        $this->getUser($this->name,$this->pwd);
     }
     private function EmptyInput(){
         $result = true;
-        if(empty($this->username) || empty($this->pwd)){
+        if(empty($this->name) || empty($this->pwd)){
             $result = false;
         }
         return $result;

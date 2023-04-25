@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <header>
     <nav>
@@ -13,12 +13,11 @@ session_start();
             <li><a href="#faq-section">FAQ</a></li>
 
             <?php
-            if(isset($_SESSION["username"])){
+            if(isset($_SESSION["name"])){
 
             ?>
                 <li><a href="#questions-section">Contact Us</a></li>
-                <li><a href="../courses.php">Courses</a></li>
-                <li><a href="../includes/logout.inc.php">Logout</a></li>
+                <li><a href="includes/logout.inc.php">Logout</a></li>
             <?php
             }
             ?>

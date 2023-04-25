@@ -1,13 +1,15 @@
 <?php
 
     class SignUpController extends SignUp {
-        private string $username;
+        private string $name;
+        private string $surname;
         private string $email;
         private string $pwd;
         private string $rpwd;
 
-        public function __construct(string $username,string $email,string $pwd,string $rpwd){
-            $this->username=$username;
+        public function __construct(string $name,string $surname,string $email,string $pwd,string $rpwd){
+            $this->name=$name;
+            $this->surname=$surname;
             $this->email=$email;
             $this->pwd=$pwd;
             $this->rpwd=$rpwd;
@@ -38,18 +40,18 @@
                 header("Location: ../index.php?error=emailtaken");
                 exit();
             }
-            $this->SetUser($this->username,$this->email,$this->pwd);
+            $this->SetUser($this->name,$this->surname,$this->email,$this->pwd);
         }
         private function EmptyInput(){
             $result = true;
-            if(empty($this->username) || empty($this->email) || empty($this->pwd) || empty($this->rpwd)){
+            if(empty($this->name) || empty($this->surname) || empty($this->email) || empty($this->pwd) || empty($this->rpwd)){
                 $result = false;
             }
             return $result;
         }
         private function InvalidName(){
             $result = true;
-            if(!preg_match("/^[a-zA-Z0-9]*$/",$this->username)){
+            if(!preg_match("/^[a-zA-Z0-9]*$/",$this->name)){
                 $result = false;
             }
             return $result;
@@ -78,7 +80,7 @@
         }
         private function checkExistenceName(){
             $result = true;
-            if(!$this->checkName($this->username)){
+            if(!$this->checkName($this->name)){
                 $result = false;
             }
             return $result;

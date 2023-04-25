@@ -3,7 +3,7 @@
 <?php
 include_once "parts/head.php";
 session_start();
-if (isset($_SESSION["username"])) {
+if (isset($_SESSION["name"])) {
     header("Location: index.php?error=none");
 }else {
 ?>
@@ -21,8 +21,13 @@ if (isset($_SESSION["username"])) {
                     <h2>And Start Learning</h2>
                 </div>
                 <div class="input-text ">
-                <input type="text" id="username" name="username" placeholder="Name:" required>
-                <div class="error"></div>
+                    <input type="text" id="name" name="name" placeholder="Name:" required>
+                    <div class="error"></div>
+                </div>
+                </div>
+                <div class="input-text">
+                    <input type="text" id="surname" name="surname" placeholder="Surname:" required>
+                    <div class="error"></div>
                 </div>
                 </div>
                 <div class="input-text">
