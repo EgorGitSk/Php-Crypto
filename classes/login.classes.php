@@ -10,7 +10,9 @@ class Login extends Db{
             header("Location: ../index.php?error=fail");
             exit();
         }
-        if($sql->rowCount() == 0){
+        $loginData = $sql->fetchAll(PDO::FETCH_ASSOC);
+        if(count($loginData ) == 0) {
+
             $sql = null;
             header("Location: ../index.php?error=userNotFound");
             exit();
@@ -29,7 +31,8 @@ class Login extends Db{
                 header("Location: ../index.php?error=fail");
                 exit();
             }
-            if($sql->rowCount() == 0){
+            $loginData = $sql->fetchAll(PDO::FETCH_ASSOC);
+            if(count($loginData ) == 0) {
                 $sql = null;
                 header("Location: ../index.php?error=userNotFound");
                 exit();

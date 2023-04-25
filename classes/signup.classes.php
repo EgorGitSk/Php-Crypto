@@ -24,7 +24,8 @@
             }
 
             $result = true;
-            if($sql->rowCount() == 0){
+            $signupData = $sql->fetchAll(PDO::FETCH_ASSOC);
+            if(count($signupData ) == 0) {
                 $result = false;
             }
 
