@@ -29,8 +29,13 @@
                 header("Location: ../index.php?error=invalidepassword");
                 exit();
             }
-            if(!$this->checkExistence()){
-                header("Location: ../index.php?error=userexists");
+
+            if(!$this->checkExistenceName()){
+                header("Location: ../index.php?error=nametaken");
+                exit();
+            }
+            if(!$this->checkExistenceEmail()){
+                header("Location: ../index.php?error=emailtaken");
                 exit();
             }
             $this->SetUser($this->username,$this->email,$this->pwd);
@@ -63,9 +68,17 @@
             }
             return $result;
         }
-        private function checkExistence(){
+
+        private function checkExistenceEmail(){
             $result = true;
-            if(!$this->checkUser($this->username,$this->email)){
+            if(!$this->checkEmail($this->email)){
+                $result = false;
+            }
+            return $result;
+        }
+        private function checkExistenceName(){
+            $result = true;
+            if(!$this->checkName($this->username)){
                 $result = false;
             }
             return $result;

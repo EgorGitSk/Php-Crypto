@@ -14,10 +14,10 @@
 
             $sql = null;
         }
-        protected function checkUser($username,$email){
-            $sql = $this->connect()->prepare("SELECT username FROM users WHERE username = ? or email = ?;");
+        protected function checkEmail($email){
+            $sql = $this->connect()->prepare("SELECT username FROM users WHERE email = ?;");
 
-            if(!$sql->execute(array($username,$email))){
+            if(!$sql->execute(array($email))){
                 $sql = null;
                 header("Location: ../index.php?error=fail");
                 exit();
@@ -25,7 +25,24 @@
 
             $result = true;
             $signupData = $sql->fetchAll(PDO::FETCH_ASSOC);
-            if(count($signupData ) == 0) {
+            if(count($signupData ) > 0) {
+                $result = false;
+            }
+
+            return $result;
+        }
+        protected function checkName($username){
+            $sql = $this->connect()->prepare("SELECT username FROM users WHERE username = ?;");
+
+            if(!$sql->execute(array($username))){
+                $sql = null;
+                header("Location: ../index.php?error=fail");
+                exit();
+            }
+
+            $result = true;
+            $signupData = $sql->fetchAll(PDO::FETCH_ASSOC);
+            if(count($signupData ) > 0) {
                 $result = false;
             }
 

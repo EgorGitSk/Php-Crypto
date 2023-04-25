@@ -1,7 +1,5 @@
 <?php
 
-
-
     if(isset($_POST['submit'])){
     //Grabbing the data
     $username = $_POST['username'];
