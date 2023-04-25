@@ -1,6 +1,6 @@
 <?php
     class Db{
-        public function connect(){
+        protected function connect(){
             try{
                 $host = "localhost";
                 $port = 3306;
@@ -16,6 +16,9 @@
                 print("Error!: " . $e->getMessage(). "<br>");
                 die();
             }
+        }
+        public function getConnection(){
+            return $this->connect();
         }
     }
 ?>
