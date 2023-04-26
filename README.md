@@ -4,9 +4,11 @@ Tasks:
 
 1.Registration and Login +
 
-2.Change user data +
+2.Allow users to change their data, name, surname and email +
 
-3.Modify main page data +/-
+3.Contact Form
+
+4.Modify main page data +/-
 
 5. Admin page
 
