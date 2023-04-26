@@ -41,7 +41,7 @@ if (!isset($_SESSION["name"])) {
             <div class="header__search">
 
             </div>
-            <a  href="{{url_for('users.account')}}" style="text-decoration:none;"><img src="{{url_for('static',filename='profile_pics/'+current_user.profile_image)}}" class="header__img" alt=""></a>
+            <a  href="account.php" style="text-decoration:none;">Go to User Page</a>
             <div class="header__toggle">
                 <i class="fas fa-bars"id="header-toggle"></i>
 
