@@ -183,7 +183,7 @@ if (!isset($_SESSION["name"])) {
                 <i class="fas fa-phone"></i>
                 <span class="nav__name">Contact us</span>
             </a>
-            <a href="{{url_for('users.logout')}}" class="nav__link nav__logout">
+            <a href="includes/logout.inc.php" class="nav__link nav__logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav__name">Log Out</span>
             </a>

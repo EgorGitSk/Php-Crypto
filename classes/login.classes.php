@@ -2,10 +2,10 @@
 class Login extends Db{
 
     public function getUser($name,$pwd){
-        $sql = $this->connect()->prepare("SELECT password FROM users WHERE name = ? OR email = ?");
+        $sql = $this->connect()->prepare("SELECT password FROM users WHERE name = ?");
 
 
-        if(!$sql->execute(array($name,$name))){
+        if(!$sql->execute(array($name))){
             $sql = null;
             header("Location: ../index.php?error=fail");
             exit();
@@ -38,7 +38,9 @@ class Login extends Db{
             session_start();
             $_SESSION["id"] = $user[0]["id"];
             $_SESSION["name"] = $user[0]["name"];
+            $_SESSION["email"] = $user[0]["email"];
             $_SESSION["surname"] = $user[0]["surname"];
+            $_SESSION["admin"] = $user[0]["admin"];
             $sql = null;
         }
 

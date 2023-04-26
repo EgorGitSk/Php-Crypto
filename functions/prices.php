@@ -23,5 +23,6 @@ function get_prices(){
     }
 }
 
+
 ?>
 

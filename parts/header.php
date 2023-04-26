@@ -21,6 +21,15 @@
             <?php
             }
             ?>
+            <?php
+            if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+
+                ?>
+                <li><a href="admin/admin.php">Admin</a></li>
+
+                <?php
+            }
+            ?>
         </ul>
         <div></div>
         <div class="burger-menu" ><i class="fa-solid fa-bars" ></i></div>
