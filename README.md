@@ -10,8 +10,8 @@ Tasks:
 
 4.Modify main page data +/-
 
-5. Admin page
+5. Admin page +/-
 
-6.Add, Delete users, change their data
+6.Add +, Delete users+, change their data , add/delete data to prices table +
 
 7.Modify,Add course sections, lessons
