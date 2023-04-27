@@ -64,7 +64,7 @@ if (!isset($_SESSION["name"])) {
                             <i class="fas fa-home"></i>
                             <span class="nav__name">Home</span>
                         </a>
-
+                        
                         <div class="nav__dropdown">
                             <a href="#" class="nav__link">
                                 <i class="fas fa-dot-circle"></i>

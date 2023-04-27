@@ -14,15 +14,15 @@ if(isset($_POST['submit'])){
 
     if(!empty($name)){
         $change->ChangeName($name);
-        $_SESSION["name"] = $name;
+
     }
     if(!empty($surname)){
         $change->ChangeSurName($surname);
-        $_SESSION["surname"] = $surname;
+
     }
     if(!empty($email)){
         $change->ChangeEmail($email);
-        $_SESSION["email"] = $email;
+
     }
 
 

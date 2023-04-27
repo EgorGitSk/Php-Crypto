@@ -11,11 +11,14 @@
             if($sql->rowCount() == 0){
                 $sql = $this->connect()->prepare('UPDATE users SET name = ? WHERE name= ?;');
                 $sql->execute(array($name,$_SESSION["name"]));
+                $_SESSION["name"] = $name;
+                header("Location: ../account.php?error=nameistaken");
             }
         }
         public function ChangeSurName($surname){
                 $sql = $this->connect()->prepare('UPDATE users SET surname = ?;');
                 $sql->execute(array($surname));
+                $_SESSION["surname"] = $surname;
         }
         public function ChangeEmail($email){
             $sql = $this->connect()->prepare("SELECT * FROM users WHERE email = ?");
@@ -27,6 +30,8 @@
             if($sql->rowCount() == 0){
                 $sql = $this->connect()->prepare('UPDATE users SET email = ? WHERE email= ?;');
                 $sql->execute(array($email,$_SESSION["email"]));
+                $_SESSION["email"] = $email;
+                header("Location: ../account.php?error=emailistaken");
             }
         }
     }
