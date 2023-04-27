@@ -4,30 +4,29 @@ class Admin extends Db{
         $sql = $this->connect()->prepare("SELECT * FROM users");
         $sql->execute();
         $user = $sql->fetchAll(PDO::FETCH_ASSOC);
-        for($i = 0; $i < $sql->rowCount(); $i++){
-            echo "<tr>";
-            echo '<td>'. $user[$i]["id"] .'</td>';
-            echo '<td>'.$user[$i]["name"].'</td>';
-            echo '<td>'.$user[$i]["surname"].'</td>';
-            echo '<td>'.$user[$i]["email"].'</td>';
-            echo "</tr>";
+        return array($user,$sql);
+    }
+    public function Delete_User($id){
+        $sql = $this->connect()->prepare("DELETE FROM users WHERE id = ?");
+        $sql->execute(array($id));
+    }
+    public function Add_User($name,$surname,$email){
+        $user = new SignUp();
 
-        }
+
     }
     public function Get_All_Prices(){
         $sql = $this->connect()->prepare("SELECT * FROM pricelist");
         $sql->execute();
         $price = $sql->fetchAll(PDO::FETCH_ASSOC);
         for($i = 0; $i < $sql->rowCount(); $i++){
-            echo "<tr>";
-            echo '<td>'. $price[$i]["id"] .'</td>';
-            echo '<td>'.$price[$i]["course"].'</td>';
-            echo '<td>'.$price[$i]["investing"].'</td>';
-            echo '<td>'.$price[$i]["mining"].'</td>';
-            echo '<td>'.$price[$i]["portfolio"].'</td>';
-            echo '<td>'.$price[$i]["price"].'</td>';
-            echo "</tr>";
-
+            echo 'Id: '. $price[$i]["id"] .'<br>';
+            echo 'Course: '.$price[$i]["course"].'<br>';
+            echo 'Investing: '.$price[$i]["investing"].'<br>';
+            echo 'Mining: '.$price[$i]["mining"].'<br>';
+            echo 'Portfolio: '.$price[$i]["portfolio"].'<br>';
+            echo 'Price: '.$price[$i]["price"].'<br>';
+            echo '---------------------<br>';
         }
     }
 }

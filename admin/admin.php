@@ -33,45 +33,40 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     </li>
 </ul>
 <div class="jumbotron">
-    <form>
-        <input type="text" name="name" placeholder="Name">
-        <input type="text" name="email" placeholder="Email">
-        <input type="submit" value="Delete user">
-    </form>
     <br>
-    <form>
+    <form action="functions.php" method="post">
+        <input type="hidden" name="add_user">
         <input type="text" name="name" placeholder="Name">
         <input type="text" name="surname" placeholder="Surname">
         <input type="text" name="email" placeholder="Email">
+        <input type="text" name="password" placeholder="password">
         <input type="submit" value="Add user">
     </form>
     <h2> Users table</h2>
-<table class="jumbotron">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Email</th>
-    </tr>
+
+
     <?php
-    $admin->Get_All_Users();
+    $users = $admin->Get_All_Users();
+    $user = $users[0];
+    $sql = $users[1];
+    for($i = 0; $i < $sql->rowCount(); $i++){
+        echo 'Id: '. $user[$i]["id"] .'<br>';
+        echo 'Name: '.$user[$i]["name"] .'<br>';
+        echo 'Surname: '.$user[$i]["surname"] .'<br>';
+        echo 'Email: '.$user[$i]["email"] .'<br>';
+        echo '<form action="functions.php" method="post">
+            <input type="hidden" name="delete">
+            <input type="hidden" name="id" value="$user[$i]["id"]">
+            <input type="submit" value="Delete user"></form>';
+        echo '---------------------<br>';
+    }
     ?>
-</table>
+
 
     <h2> Prices table</h2>
-    <table class="jumbotron">
-        <tr>
-            <th>Id</th>
-            <th>Course</th>
-            <th>Investing</th>
-            <th>Mining</th>
-            <th>Portfolio</th>
-            <th>Price</th>
-        </tr>
         <?php
         $admin->Get_All_Prices();
         ?>
-    </table>
 
 </div>
 </body>
