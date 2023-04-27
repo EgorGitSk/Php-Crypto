@@ -56,7 +56,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         echo 'Email: '.$user[$i]["email"] .'<br>';
         echo '<form action="functions.php" method="post">
             <input type="hidden" name="delete">
-            <input type="hidden" name="id" value="$user[$i]["id"]">
+            <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
             <input type="submit" value="Delete user"></form>';
         echo '---------------------<br>';
     }
@@ -65,7 +65,22 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 
     <h2> Prices table</h2>
         <?php
-        $admin->Get_All_Prices();
+        $prices = $admin->Get_All_Prices();
+        $price = $prices[0];
+        $sql = $prices[1];
+        for($i = 0; $i < $sql->rowCount(); $i++){
+            echo 'Id: '. $price[$i]["id"] .'<br>';
+            echo 'Course: '.$price[$i]["course"].'<br>';
+            echo 'Investing: '.$price[$i]["investing"].'<br>';
+            echo 'Mining: '.$price[$i]["mining"].'<br>';
+            echo 'Portfolio: '.$price[$i]["portfolio"].'<br>';
+            echo 'Price: '.$price[$i]["price"].'<br>';
+            echo '<form action="functions.php" method="post">
+            <input type="hidden" name="delete_price">
+            <input type="hidden" name="id" value="' . $price[$i]["id"] . '">
+            <input type="submit" value="Delete price"></form>';
+            echo '---------------------<br>';
+        }
         ?>
 
 </div>

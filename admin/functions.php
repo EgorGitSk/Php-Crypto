@@ -4,8 +4,16 @@ if(isset($_POST['delete'])){
     include '../classes/db.classes.php';
     include '../classes/admin.php';
     $change = new Admin();
-    $change->Delete_User(11);
+    $change->Delete_User($id);
     header("Location: ./admin.php?error=userdeleted");
+}
+if(isset($_POST['delete_price'])){
+    $id = $_POST['id'];
+    include '../classes/db.classes.php';
+    include '../classes/admin.php';
+    $change = new Admin();
+    $change->Delete_Price($id);
+    header("Location: ./admin.php?error=pricedeleted");
 }
 if(isset($_POST['add_user'])){
     $name = $_POST['name'];
