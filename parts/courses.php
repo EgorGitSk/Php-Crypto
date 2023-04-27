@@ -1,6 +1,7 @@
 <?php
 include_once "classes/db.classes.php";
-include_once "functions/prices.php";
+include_once "classes/admin.php";
+$admin = new Admin();
 ?>
 <section class="course-price" id="price-section">
     <h1 class="name">Course PRICELIST</h1>
@@ -17,7 +18,20 @@ include_once "functions/prices.php";
             </thead>
             <tbody>
             <?php
-            get_prices();
+            $prices = $admin->Get_All_Prices();
+            $price = $prices[0];
+            $sql = $prices[1];
+            for($i = 0; $i < $sql->rowCount(); $i++){
+                echo "<tr>";
+                echo '<td>'. $price[$i]["id"] .'</td>';
+                echo '<td>'.$price[$i]["course"].'</td>';
+                echo '<td>'.$price[$i]["investing"].'</td>';
+                echo '<td>'.$price[$i]["mining"].'</td>';
+                echo '<td>'.$price[$i]["portfolio"].'</td>';
+                echo '<td>'.$price[$i]["price"].'</td>';
+                echo "</tr>";
+            }
+
             ?>
             </tbody>
         </table>

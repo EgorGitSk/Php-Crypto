@@ -23,5 +23,9 @@ class Admin extends Db{
         $sql = $this->connect()->prepare("DELETE FROM pricelist WHERE id = ?");
         $sql->execute(array($id));
     }
+    public function Add_Price($course,$investing,$mining,$portfolio,$price){
+        $sql = $this->connect()->prepare("INSERT INTO pricelist (`course`, `investing`, `mining`, `portfolio`, `price`) VALUES (?, ?, ?, ?, ?)");
+        $sql->execute(array($course,$investing,$mining,$portfolio,$price));
+    }
 }
 ?>
