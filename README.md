@@ -19,14 +19,18 @@ Tasks:
 
 
 #Create Tables
+
 #FAQ
+
 CREATE TABLE `faq` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` longtext DEFAULT NULL,
   `text` longtext DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
 #COURSES 
+
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `section` varchar(45) DEFAULT NULL,
@@ -35,7 +39,9 @@ CREATE TABLE `courses` (
   `link` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
 #PRICELIST
+
 CREATE TABLE `pricelist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `course` varchar(45) DEFAULT NULL,
@@ -45,7 +51,9 @@ CREATE TABLE `pricelist` (
   `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
 #QUESTION
+
 CREATE TABLE `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
@@ -57,7 +65,9 @@ CREATE TABLE `question` (
   KEY `connection` (`user_id`),
   CONSTRAINT `connection` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
 #Users
+
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
