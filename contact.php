@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 include_once "parts/head.php";
+session_start();
 ?>
 <body class="bg-black contact-bg">
   <header>
@@ -39,20 +40,22 @@ include_once "parts/head.php";
   </div>
   </div>
 <div class="contact-form">
-  <form action="thank.php">
-    <div class="form-row">
-      <input type="text" class="contact-form" placeholder="First name" required>
-      <input type="text" class="contact-form" placeholder="Last name" required>
+  <form action="includes/contact.inc.php" method="post">
+      <div class="form-row">
+      <?php
+          echo '
+                  <input type="hidden" name="send_question">
+                  <input type="hidden" class="contact-form" name="user_id" value="' . $_SESSION["id"] . '">
+                  <input type="text" name="name" class="contact-form" placeholder="First name" value="' . $_SESSION["name"] . '">
+                  <input type="email" name="email" class="contact-form" placeholder="Email" value="' . $_SESSION["email"] . '"> ';
+      ?>
     </div>
+
     <div class="form-row">
-      <input type="email" class="contact-form" placeholder="Email" required>
-      <input type="phone" class="contact-form" placeholder="Phone" required>
-    </div>
-    <div class="form-row">
-    <textarea name="" id="" placeholder="Your Message" required></textarea>
+    <textarea name="message" id="" placeholder="Your Message" required></textarea>
   </div>
   <div class="form-row">
-    <input type="Submit" name="" id="">
+    <input type="submit" name="submit" id="">
   </div>
   </form>
 </div>

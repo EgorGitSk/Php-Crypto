@@ -34,5 +34,11 @@ class Admin extends Db{
         $faq = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($faq,$sql);
     }
+    public function Get_All_Questions_Answers(){
+        $sql = $this->connect()->prepare("SELECT * FROM question left join answers on answers.questions_id = question.question_id group by question.question_id;");
+        $sql->execute();
+        $contact = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array($contact,$sql);
+    }
 }
 ?>

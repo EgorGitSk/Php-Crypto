@@ -4,8 +4,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     include "../classes/db.classes.php";
     include "../classes/admin.php";
     $admin = new Admin();
-
-
 }else {
     header("Location: index.php?error=adminonly");
 }
@@ -30,6 +28,9 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 <ul class="nav">
     <li class="nav-item">
         <a class="nav-link" href="../index.php">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="answers.php">Answers</a>
     </li>
 </ul>
 <div class="jumbotron">

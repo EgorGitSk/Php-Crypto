@@ -47,7 +47,6 @@ if(isset($_POST['add_user'])){
     $email = $_POST['email'];
     $pwd = $_POST['password'];
     include '../classes/db.classes.php';
-
     include "../classes/signup.classes.php";
     include "../classes/signup-contr.classes.php";
     $signup = new SignUpController( $name,$surname, $email, $pwd, $pwd);
@@ -55,6 +54,18 @@ if(isset($_POST['add_user'])){
     $signup->SignUpUser();
     header("Location: ./admin.php?error=useradded");
 
+}
+
+if(isset($_POST['change_answer'])){
+    $id = $_POST['question_id'];
+    $message = $_POST['message'];
+    $answer = $_POST['answer'];
+    $answered = $_POST['answered'];
+    include '../classes/db.classes.php';
+    include '../classes/admin.php';
+    $change = new Admin();
+    $change->Change_Price($course,$investing,$mining,$portfolio,$price,$id);
+    header("Location: ./admin.php?error=pricechanged");
 }
 
 ?>
