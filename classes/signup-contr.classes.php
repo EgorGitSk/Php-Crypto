@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     class SignUpController extends SignUp {
         private string $name;
         private string $surname;
@@ -15,32 +15,45 @@
             $this->rpwd=$rpwd;
         }
         public function SignUpUser(){
+            $errors = array();
             if(!$this->EmptyInput()){
-                header("Location: ../index.php?error=emptyinput");
-                exit();
+                /*header("Location: ../index.php?error=emptyinput");
+                exit(); */
+                array_push($errors, 'emptyinput');
             }
             if(!$this->InvalidName()){
-                header("Location: ../index.php?error=invalidname");
-                exit();
+                /*header("Location: ../index.php?error=invalidname");
+                exit();*/
+                array_push($errors, 'invalidname');
             }
             if(!$this->InvalidEmail()){
-                header("Location: ../index.php?error=invalidemail");
-                exit();
+                /*header("Location: ../index.php?error=invalidemail");
+                exit();*/
+                array_push($errors, 'invalidemail');
             }
             if(!$this->InvalidPassword()){
-                header("Location: ../index.php?error=invalidepassword");
-                exit();
+                /*header("Location: ../index.php?error=invalidepassword");
+                exit();*/
+                array_push($errors, 'invalidepassword');
             }
 
             if(!$this->checkExistenceName()){
-                header("Location: ../index.php?error=nametaken");
-                exit();
+                /*header("Location: ../index.php?error=nametaken");
+                exit();*/
+                array_push($errors, 'nametaken');
             }
             if(!$this->checkExistenceEmail()){
-                header("Location: ../index.php?error=emailtaken");
+                /*header("Location: ../index.php?error=emailtaken");
+                exit();*/
+                array_push($errors, 'emailtaken');
+            }
+            if(count($errors)>0){
+                $_SESSION['errors'] = $errors;
+                header("Location: ../signup.php?error=error");
                 exit();
             }
             $this->SetUser($this->name,$this->surname,$this->email,$this->pwd);
+
         }
         private function EmptyInput(){
             $result = true;

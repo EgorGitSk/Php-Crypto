@@ -6,6 +6,11 @@ session_start();
 if (isset($_SESSION["name"])) {
     header("Location: index.php?error=none");
 }else {
+    // check if there are any errors in the session
+if (isset($_SESSION['errors'])) {
+    // get the errors array from the session
+    $errors = $_SESSION['errors'];
+}
 ?>
 <body class="sign-bg">
     <section class="sign">
@@ -21,22 +26,40 @@ if (isset($_SESSION["name"])) {
                     <h2>And Start Learning</h2>
                 </div>
                 <div class="input-text ">
-                    <input type="text" id="name" name="name" placeholder="Name:" required>
+                    <input type="text" id="name" name="name" placeholder="Name:" >
+                    <?php
+                    if (isset($_SESSION['errors']) and in_array('nametaken', $errors)) {
+                        echo '<div class="error">Name is already taken</div>';
+                    }
+                    ?>
+
+                </div>
+                </div>
+                <div class="input-text">
+                    <input type="text" id="surname" name="surname" placeholder="Surname:" >
                     <div class="error"></div>
                 </div>
                 </div>
                 <div class="input-text">
-                    <input type="text" id="surname" name="surname" placeholder="Surname:" required>
-                    <div class="error"></div>
-                </div>
-                </div>
-                <div class="input-text">
-                <input type="email" id="email" name="email" placeholder="Email:" required>
-                <div class="error"></div>
+                <input type="email" id="email" name="email" placeholder="Email:" >
+                    <?php
+                    if (isset($_SESSION['errors']) and in_array('invalidemail', $errors)) {
+                        echo '<div class="error">Email is invalid</div>';
+                    }
+                    ?>
+                    <?php
+                    if (isset($_SESSION['errors']) and in_array('emailtaken', $errors)) {
+                        echo '<div class="error">Email is already taken</div>';
+                    }
+                    ?>
                 </div>  
                 <div class="input-text">
-                <input type="password" id="password" name="pwd" placeholder="password:" required>
-                <div class="error"></div>
+                <input type="password" id="password" name="pwd" placeholder="password:" >
+                    <?php
+                    if (isset($_SESSION['errors']) and in_array('invalidepassword', $errors)) {
+                        echo '<div class="error">Password does not match</div>';
+                    }
+                    ?>
                 </div>
                 <div class="input-text">
                     <input type="password" id="password" name="rpwd" placeholder="password repeat:" required>
@@ -55,4 +78,5 @@ if (isset($_SESSION["name"])) {
 </html>
 <?php
 }
+unset($_SESSION['errors']);
 ?>
