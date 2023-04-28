@@ -15,6 +15,19 @@ if(isset($_POST['delete_price'])){
     $change->Delete_Price($id);
     header("Location: ./admin.php?error=pricedeleted");
 }
+if(isset($_POST['change_price'])){
+    $course = $_POST['course'];
+    $investing = $_POST['investing'];
+    $mining = $_POST['mining'];
+    $portfolio = $_POST['portfolio'];
+    $price = $_POST['price'];
+    $id = $_POST['id'];
+    include '../classes/db.classes.php';
+    include '../classes/admin.php';
+    $change = new Admin();
+    $change->Change_Price($course,$investing,$mining,$portfolio,$price,$id);
+    header("Location: ./admin.php?error=pricechanged");
+}
 if(isset($_POST['add_price'])){
     $course = $_POST['course'];
     $investing = $_POST['investing'];

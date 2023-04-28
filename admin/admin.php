@@ -53,7 +53,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <th scope="col">Surname</th>
             <th scope="col">Email</th>
             <th scope="col">Delete</th>
-            <th scope="col">Change</th>
+            <th scope="col">Admin</th>
         </tr>
         </thead>
         <tbody>
@@ -72,7 +72,10 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <input type="hidden" name="delete">
             <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
             <input type="submit" value="Delete user" class="btn btn-outline-danger"></form></td>';
-        echo '<td></td>';
+        echo '<td><form action="functions.php" method="post">
+            <input type="hidden" name="delete">
+            <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
+            <input type="submit" value="Delete user" class="btn btn-outline-danger"></form></td>';
         echo '</tr>';
     }
     ?>
@@ -100,8 +103,8 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <th scope="col">Mining</th>
             <th scope="col">Portfolio</th>
             <th scope="col">Price</th>
-            <th scope="col">Delete</th>
             <th scope="col">Change</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -111,17 +114,23 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         $sql = $prices[1];
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
+            echo '<form action="functions.php" method="post">';
             echo '<th scope="row">'. $price[$i]["id"] .'</th>>';
-            echo '<td>'.$price[$i]["course"].'</td>>';
-            echo '<td>'.$price[$i]["investing"].'</td>>';
-            echo '<td>'.$price[$i]["mining"].'</td>>';
-            echo '<td>'.$price[$i]["portfolio"].'</td>>';
-            echo '<td>'.$price[$i]["price"].'</td>>';
+            echo '<td>'.'<input type="text" value="'.$price[$i]["course"].'" name="course" size="50" placeholder="'.$price[$i]["course"].'">'.'</td>';
+            echo '<td>'.'<input type="text" value="'.$price[$i]["investing"].'" name="investing" size="5" placeholder="'.$price[$i]["investing"].'">'.'</td>';
+            echo '<td>'.'<input type="text" value="'.$price[$i]["mining"].'" name="mining" size="5" placeholder="'.$price[$i]["mining"].'">'.'</td>';
+            echo '<td>'.'<input type="text" value="'.$price[$i]["portfolio"].'" name="portfolio" size="5" placeholder="'.$price[$i]["portfolio"].'">'.'</td>';
+            echo '<td>'.'<input type="text" value="'.$price[$i]["price"].'" name="price" size="5" placeholder="'.$price[$i]["price"].'">'.'</td>';
+
+
+            echo '<td>
+            <input type="hidden" name="change_price">
+            <input type="hidden" name="id" value="' . $price[$i]["id"] . '">
+            <input type="submit" value="Change data" class="btn btn-outline-success"></form></td>';
             echo '<td><form action="functions.php" method="post">
             <input type="hidden" name="delete_price">
             <input type="hidden" name="id" value="' . $price[$i]["id"] . '">
             <input type="submit" value="Delete price" class="btn btn-outline-danger"></form></td>';
-            echo '<td></td>';
             echo '</tr>';
         }
         ?>

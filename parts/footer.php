@@ -30,6 +30,6 @@
         </ul>
     </div>
     <div class="credits">
-        <p>© 2022 Yehor Savchuk</p>
+        <p>© 2023 Yehor Savchuk</p>
     </div>
 </footer>

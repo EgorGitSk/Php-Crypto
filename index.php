@@ -193,27 +193,10 @@ include_once "parts/header.php";
         <?php
             include_once "parts/courses.php";
         ?>
-        <section class="FAQ" id="faq-section">
-            <h1 class="name">FAQ</h1>
-            <div class="accordion">
-            <div class="content">
-                <div class="head">
-                    <h1>Who this course is for?</h1><i class="fa-solid fa-plus"></i>
-                </div>
-                <div class="text">
-                    <p>If you are serious about Making Money Online by investing in the Cryptocurrency Market, this course is for you!</p>
-                </div>
-            </div>
-            <div class="content">
-                <div class="head">
-                    <h1>What exactly will you teach me?</h1><i class="fa-solid fa-plus"></i>
-                </div>
-                <div class="text">
-                    <p>I’ll teach you exactly what to invest in, when to buy, when to sell, and most importantly teach you my best technical analysis techniques that can help you predict the next market move in less than 15 minutes with high-accuracy (and you’ll learn with dozens of real world examples).</p>
-                </div>
-            </div>
-            </div>
-        </section>
+        <?php
+        include_once "parts/faq.php";
+        ?>
+
         <section class="questions" id="questions-section">
             <div class="block">
                 <div class="text">
