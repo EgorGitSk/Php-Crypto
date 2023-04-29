@@ -19,7 +19,6 @@ session_start();
 <body>
     <div class="wrapper bg-black mt-sm-5">
       <form method="POST" action="includes/user.inc.php" enctype="multipart/form-data">
-        {{form.hidden_tag()}}
         <h4 class="pb-4 border-bottom">Account <?php echo $_SESSION["name"] . " " . $_SESSION["surname"] ?> Settings</h4>
 
         <div class="py-2">
@@ -32,7 +31,11 @@ session_start();
             <div class="row py-2">
                 <div class="col-md-6 pt-md-0 pt-3"><input type="text" name="surname" class="bg-light form-control" placeholder="Surname"></div>
             </div>
-
+            <?php
+            echo '
+                  <input type="hidden" name="user">
+                  <input type="hidden" name="id" value="' . $_SESSION["id"] . '">';
+            ?>
             <div class="py-3 pb-4 border-bottom"> <input type="submit" name="submit" value="Submit" class="btn btn-primary mr-3">  </div>
 
         </div>

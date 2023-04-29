@@ -1,8 +1,12 @@
 <?php
-session_start();
+include "classes/db.classes.php";
+include "classes/user.classes.php";
+if(!isset($_SESSION))
+{
+    session_start();
+}
 if (isset($_SESSION["name"])) {
-    include "classes/db.classes.php";
-    include "classes/user.classes.php";
+
     $user = new User();
 }else {
     header("Location: index.php?error=usersonly");
@@ -57,7 +61,7 @@ if (isset($_SESSION["name"])) {
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
 
-            echo '<th scope="row">'. $message[$i]["question_id"] .'</th>>';
+            echo '<th scope="row">'. $message[$i]["question_id"] .'</th>';
             echo '<td> <abbr title="'.$message[$i]["sent_date"].'">'.$message[$i]["name"].'</abbr></td>';
             echo '<td>'.$message[$i]["email"].'</td>';
             echo '<td>'.$message[$i]["message"].'</td>';

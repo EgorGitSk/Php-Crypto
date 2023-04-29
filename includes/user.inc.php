@@ -3,6 +3,7 @@
 if(isset($_POST['submit'])){
     //Grabbing the data
     $name = $_POST['name'];
+    $id = $_POST['id'];
     $surname = $_POST['surname'];
     $email = $_POST['email'];
 
@@ -13,15 +14,15 @@ if(isset($_POST['submit'])){
     $change = new User();
 
     if(!empty($name)){
-        $change->ChangeName($name);
+        $change->ChangeName($name,$id);
 
     }
     if(!empty($surname)){
-        $change->ChangeSurName($surname);
+        $change->ChangeSurName($surname,$id);
 
     }
     if(!empty($email)){
-        $change->ChangeEmail($email);
+        $change->ChangeEmail($email,$id);
 
     }
 
