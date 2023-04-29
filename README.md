@@ -6,13 +6,13 @@ Tasks:
 
 2.Allow users to change their data, name, surname and email +
 
-3.Contact Form
+3.Contact Form + 
 
 4.Modify main page data +/-
 
 5. Admin page +/-
 
-6.Add +, Delete users+, change their data , add/delete data to prices table +
+6.Add +, Delete users+, add/delete data to prices table +
 
 7.Modify,Add course sections, lessons
 
@@ -55,16 +55,29 @@ CREATE TABLE `pricelist` (
 #QUESTION
 
 CREATE TABLE `question` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `name` varchar(25) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `message` longtext DEFAULT NULL,
   `sent_date` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`question_id`),
   KEY `connection` (`user_id`),
   CONSTRAINT `connection` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+#Answers
+
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `questions_id` int(11) DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
+  `answered` varchar(30) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `answers` (`questions_id`),
+  CONSTRAINT `answers` FOREIGN KEY (`questions_id`) REFERENCES `question` (`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 
 #Users
 
