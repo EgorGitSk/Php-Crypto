@@ -40,5 +40,18 @@ class Admin extends Db{
         $contact = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($contact,$sql);
     }
+
+    public function Add_Answer($id,$answer,$answered){
+        $check = $this->connect()->prepare("SELECT * FROM answers WHERE questions_id = ?");
+        $check->execute(array($id));
+        if ($check->rowCount() > 0) {
+            $sql = $this->connect()->prepare("UPDATE answers SET answer=?, answered=? WHERE questions_id=?");
+            $sql->execute(array($answer, $answered, $id));
+        } else {
+            $sql = $this->connect()->prepare("INSERT INTO answers (questions_id, answer, answered) VALUES (?, ?, ?)");
+            $sql->execute(array($id, $answer, $answered));
+        }
+    }
+
 }
 ?>

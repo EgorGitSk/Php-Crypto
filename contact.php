@@ -11,6 +11,7 @@ session_start();
         <h1 class="logo">Crypto</h1>
         <ul class="nav-menu">
             <li><a href="index.php"><span class="go-back">Go to the Home Page</span></a></li>
+            <li><a href="questions.php"><span class="go-back">Go to Answers</span></a></li>
         </ul>
         <div></div>
         <div class="burger-menu" ><i class="fa-solid fa-bars" ></i></div>

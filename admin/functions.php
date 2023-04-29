@@ -57,15 +57,14 @@ if(isset($_POST['add_user'])){
 }
 
 if(isset($_POST['change_answer'])){
-    $id = $_POST['question_id'];
-    $message = $_POST['message'];
+    $id = $_POST['id'];
     $answer = $_POST['answer'];
     $answered = $_POST['answered'];
     include '../classes/db.classes.php';
     include '../classes/admin.php';
     $change = new Admin();
-    $change->Change_Price($course,$investing,$mining,$portfolio,$price,$id);
-    header("Location: ./admin.php?error=pricechanged");
+    $change->Add_Answer($id,$answer,$answered);
+    header("Location: ./answers.php?error=answerchanged");
 }
 
 ?>

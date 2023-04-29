@@ -1,11 +1,11 @@
 <?php
 session_start();
-if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
-    include "../classes/db.classes.php";
-    include "../classes/admin.php";
-    $admin = new Admin();
+if (isset($_SESSION["name"])) {
+    include "classes/db.classes.php";
+    include "classes/user.classes.php";
+    $user = new User();
 }else {
-    header("Location: index.php?error=adminonly");
+    header("Location: index.php?error=usersonly");
 }
 ?>
 
@@ -27,10 +27,10 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 <body>
 <ul class="nav">
     <li class="nav-item">
-        <a class="nav-link" href="../index.php">Home</a>
+        <a class="nav-link" href="index.php">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="admin.php">Admin</a>
+        <a class="nav-link" href="contact.php">Contact Page</a>
     </li>
 </ul>
 <div class="jumbotron">
@@ -46,33 +46,25 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <th scope="col">Message</th>
             <th scope="col">Answer</th>
             <th scope="col">Answered</th>
-            <th scope="col">Submit</th>
         </tr>
         </thead>
         <tbody>
 
         <?php
-        $messages = $admin->Get_All_Questions_Answers();
+        $messages = $user->Get_User_Questions_Answers($_SESSION['id']);
         $message = $messages[0];
         $sql = $messages[1];
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
-            echo '<form action="functions.php" method="post">';
+
             echo '<th scope="row">'. $message[$i]["question_id"] .'</th>>';
             echo '<td> <abbr title="'.$message[$i]["sent_date"].'">'.$message[$i]["name"].'</abbr></td>';
             echo '<td>'.$message[$i]["email"].'</td>';
             echo '<td>'.$message[$i]["message"].'</td>';
-            echo '<td>'.'<textarea name="answer" cols="40">'.$message[$i]["answer"].'</textarea>'.'</td>';
+            echo '<td>'.$message[$i]["answer"].'</td>';
+            echo '<td>'.$message[$i]["answered"].'</td>';
 
-            if(isset($message[$i]['answered'])){
-                echo '<td>'.'<input type="text" value="'.$message[$i]["answered"].'" name="answered" size="5" placeholder="'.$message[$i]["answered"].'">'.'</td>';
-            }else{
-                echo '<td>'.'<input type="text" value="Admin" name="answered" size="5" placeholder="'.$message[$i]["answered"].'">'.'</td>';
-            }
-            echo '<td>
-            <input type="hidden" name="change_answer">
-            <input type="hidden" name="id" value="' . $message[$i]["question_id"] . '">
-            <input type="submit" value="Submit Answer" class="btn btn-outline-success"></form></td>';
+
 
         }
         ?>

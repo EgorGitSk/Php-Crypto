@@ -1,5 +1,5 @@
 <?php
-    session_start();
+
     class User extends db{
         public function ChangeName($name){
             $sql = $this->connect()->prepare("SELECT * FROM users WHERE name = ?");
@@ -33,6 +33,12 @@
                 $_SESSION["email"] = $email;
                 header("Location: ../account.php?error=emailistaken");
             }
+        }
+        public function Get_User_Questions_Answers($id){
+            $sql = $this->connect()->prepare("SELECT * FROM question left join answers on answers.questions_id = question.question_id WHERE user_id = ? group by question.question_id;");
+            $sql->execute(array($id));
+            $contact = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($contact,$sql);
         }
     }
 ?>
