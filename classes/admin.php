@@ -34,6 +34,10 @@ class Admin extends Db{
         $faq = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($faq,$sql);
     }
+    public function Delete_Faqs($id){
+        $sql = $this->connect()->prepare("DELETE FROM faq WHERE id = ?");
+        $sql->execute(array($id));
+    }
     public function Get_All_Questions_Answers(){
         $sql = $this->connect()->prepare("SELECT * FROM question left join answers on answers.questions_id = question.question_id group by question.question_id;");
         $sql->execute();

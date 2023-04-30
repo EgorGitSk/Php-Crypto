@@ -6,6 +6,10 @@ session_start();
 if (isset($_SESSION["name"])) {
     header("Location: index.php?error=none");
 }else {
+if (isset($_SESSION['errors'])) {
+    // get the errors array from the session
+    $errors = $_SESSION['errors'];
+}
 ?>
 <body class="sign-bg">
     <section class="sign">
@@ -19,10 +23,20 @@ if (isset($_SESSION["name"])) {
                     <h1>Sign In To Crypto</h1>
                 </div>
                 <div class="input-text">
-                <input type="text" id="email" name="name" placeholder="Email or name:" >
+                <input type="text" id="email" name="name" placeholder="Name:" >
+                    <?php
+                    if (isset($_SESSION['errors']) and in_array('userNotFound', $errors)) {
+                        echo '<div class="error">User does not exist</div>';
+                    }
+                    ?>
                 </div>  
                 <div class="input-text">
                 <input type="password" id="password" name="pwd" placeholder="password:" >
+                    <?php
+                    if (isset($_SESSION['errors']) and in_array('passwordNotMatch', $errors)) {
+                        echo '<div class="error">Password is incorrect!</div>';
+                    }
+                    ?>
                 </div>
                 <div class="input-submit">
                 <input type="submit" name="submit" value="Sign in">
@@ -36,4 +50,5 @@ if (isset($_SESSION["name"])) {
 </html>
 <?php
 }
+unset($_SESSION['errors']);
 ?>
