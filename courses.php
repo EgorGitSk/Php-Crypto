@@ -179,7 +179,7 @@ if (!isset($_SESSION["name"])) {
                 </div>
 
             </div>
-            <a href="{{url_for('users.contact')}}" class="nav__link active">
+            <a href="contact.php" class="nav__link active">
                 <i class="fas fa-phone"></i>
                 <span class="nav__name">Contact us</span>
             </a>

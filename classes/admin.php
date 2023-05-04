@@ -28,16 +28,7 @@ class Admin extends Db{
         $sql = $this->connect()->prepare("INSERT INTO pricelist (`course`, `investing`, `mining`, `portfolio`, `price`) VALUES (?, ?, ?, ?, ?)");
         $sql->execute(array($course,$investing,$mining,$portfolio,$price));
     }
-    public function Get_All_Faqs(){
-        $sql = $this->connect()->prepare("SELECT * FROM faq");
-        $sql->execute();
-        $faq = $sql->fetchAll(PDO::FETCH_ASSOC);
-        return array($faq,$sql);
-    }
-    public function Delete_Faqs($id){
-        $sql = $this->connect()->prepare("DELETE FROM faq WHERE id = ?");
-        $sql->execute(array($id));
-    }
+
     public function Get_All_Questions_Answers(){
         $sql = $this->connect()->prepare("SELECT * FROM question left join answers on answers.questions_id = question.question_id group by question.question_id;");
         $sql->execute();
@@ -55,6 +46,24 @@ class Admin extends Db{
             $sql = $this->connect()->prepare("INSERT INTO answers (questions_id, answer, answered) VALUES (?, ?, ?)");
             $sql->execute(array($id, $answer, $answered));
         }
+    }
+    public function Get_All_Faqs(){
+        $sql = $this->connect()->prepare("SELECT * FROM faq");
+        $sql->execute();
+        $faq = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array($faq,$sql);
+    }
+    public function Add_Faqs($name,$text){
+        $sql = $this->connect()->prepare("INSERT INTO faq (`name`, `text`) VALUES (?, ?)");
+        $sql->execute(array($name,$text));
+    }
+    public function Change_Faqs($name,$text,$id){
+        $sql = $this->connect()->prepare("UPDATE faq SET `name` = ?,`text` = ? WHERE id = ?");
+        $sql->execute(array($name,$text,$id));
+    }
+    public function Delete_Faqs($id){
+        $sql = $this->connect()->prepare("DELETE FROM faq WHERE id = ?");
+        $sql->execute(array($id));
     }
 
 }

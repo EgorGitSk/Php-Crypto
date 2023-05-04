@@ -38,53 +38,50 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 </ul>
 <div class="jumbotron">
     <br>
-    <h2>Questions and Answers</h2>
-
+    <h2> Modify FAQ table</h2>
+    <form action="functions.php" method="post">
+        <input type="hidden" name="add_faq"><br>
+        <input type="text" name="name" id="name" placeholder="name"><br>
+        <textarea name="text" cols="60" rows="5"></textarea><br>
+        <input type="submit" value="Add FAQ">
+    </form>
+    <h2>Prices table</h2>
     <table class="table ">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Message</th>
-            <th scope="col">Answer</th>
-            <th scope="col">Answered</th>
-            <th scope="col">Submit</th>
+            <th scope="col">Text</th>
+            <th scope="col">Change</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
-
         <?php
-        $messages = $admin->Get_All_Questions_Answers();
-        $message = $messages[0];
-        $sql = $messages[1];
+        $prices = $admin->Get_All_Faqs();
+        $faq = $prices[0];
+        $sql = $prices[1];
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
-            echo '<th scope="row">'. $message[$i]["question_id"] .'</th>>';
-            echo '<td> <abbr title="'.$message[$i]["sent_date"].'">'.$message[$i]["name"].'</abbr></td>';
-            echo '<td>'.$message[$i]["email"].'</td>';
-            echo '<td>'.$message[$i]["message"].'</td>';
-            echo '<td>'.'<textarea name="answer" cols="40">'.$message[$i]["answer"].'</textarea>'.'</td>';
+            echo '<th scope="row">'. $faq[$i]["id"] .'</th>>';
+            echo '<td>'.'<input type="text" value="'.$faq[$i]["name"].'" name="name" size="50" placeholder="'.$faq[$i]["id"].'">'.'</td>';
+            echo '<td>'.'<textarea name="text" cols="60" rows="5">'.$faq[$i]["text"].'</textarea>'.'</td>';
 
-            if(isset($message[$i]['answered'])){
-                echo '<td>'.'<input type="text" value="'.$message[$i]["answered"].'" name="answered" size="5" placeholder="'.$message[$i]["answered"].'">'.'</td>';
-            }else{
-                echo '<td>'.'<input type="text" value="Admin" name="answered" size="5" placeholder="'.$message[$i]["answered"].'">'.'</td>';
-            }
+
             echo '<td>
-            <input type="hidden" name="change_answer">
-            <input type="hidden" name="id" value="' . $message[$i]["question_id"] . '">
-            <input type="submit" value="Submit Answer" class="btn btn-outline-success"></form></td>';
-
+            <input type="hidden" name="change_faq">
+            <input type="hidden" name="id" value="' . $faq[$i]["id"] . '">
+            <input type="submit" value="Change data" class="btn btn-outline-success"></form></td>';
+            echo '<td><form action="functions.php" method="post">
+            <input type="hidden" name="delete_faq">
+            <input type="hidden" name="id" value="' . $faq[$i]["id"] . '">
+            <input type="submit" value="Delete faq" class="btn btn-outline-danger"></form></td>';
+            echo '</tr>';
         }
         ?>
         </tbody>
     </table>
-
-
-
-
 
 </div>
 </body>

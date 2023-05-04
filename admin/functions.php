@@ -6,13 +6,11 @@ include "../classes/signup-contr.classes.php";
 $change = new Admin();
 if(isset($_POST['delete'])){
     $id = $_POST['id'];
-
     $change->Delete_User($id);
     header("Location: ./admin.php?error=userdeleted");
 }
 if(isset($_POST['delete_price'])){
     $id = $_POST['id'];
-
     $change->Delete_Price($id);
     header("Location: ./admin.php?error=pricedeleted");
 }
@@ -23,7 +21,6 @@ if(isset($_POST['change_price'])){
     $portfolio = $_POST['portfolio'];
     $price = $_POST['price'];
     $id = $_POST['id'];
-
     $change->Change_Price($course,$investing,$mining,$portfolio,$price,$id);
     header("Location: ./admin.php?error=pricechanged");
 }
@@ -35,7 +32,6 @@ if(isset($_POST['add_price'])){
     $price = $_POST['price'];
     $change->Add_Price( $course,$investing, $mining, $portfolio, $price);
     header("Location: ./admin.php?error=priceadded");
-
 }
 if(isset($_POST['add_user'])){
     $name = $_POST['name'];
@@ -53,5 +49,22 @@ if(isset($_POST['change_answer'])){
     $change->Add_Answer($id,$answer,$answered);
     header("Location: ./answers.php?error=answerchanged");
 }
-
+if(isset($_POST['add_faq'])){
+    $name = $_POST['name'];
+    $text = $_POST['text'];
+    $change->Add_Faqs($name,$text);
+    header("Location: ./faq.php?error=faqadded");
+}
+if(isset($_POST['change_faq'])){
+    $name = $_POST['name'];
+    $text = $_POST['text'];
+    $id = $_POST['id'];
+    $change->Change_Faqs($name,$text,$id);
+    header("Location: ./faq.php?error=faqchanged");
+}
+if(isset($_POST['delete_faq'])){
+    $id = $_POST['id'];
+    $change->Delete_Faqs($id);
+    header("Location: ./faq.php?error=faqdeleted");
+}
 ?>

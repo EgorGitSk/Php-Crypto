@@ -30,6 +30,9 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         <a class="nav-link" href="../index.php">Home</a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="faq.php">FAQ</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="answers.php">Answers</a>
     </li>
 </ul>
