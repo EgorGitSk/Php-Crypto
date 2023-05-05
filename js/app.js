@@ -20,8 +20,6 @@ for(a of faq){
     })
   }
 
-
-
 var btc = document.getElementById("bitcoin_2");
 var nem = document.getElementById("nem_2");
 var eth = document.getElementById("ethereum_2");

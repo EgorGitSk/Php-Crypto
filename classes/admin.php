@@ -65,6 +65,28 @@ class Admin extends Db{
         $sql = $this->connect()->prepare("DELETE FROM faq WHERE id = ?");
         $sql->execute(array($id));
     }
+    public function Get_All_Lessons(){
+        $sql = $this->connect()->prepare("SELECT * FROM lessons");
+        $sql->execute();
+        $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array($lesson,$sql);
+    }
+    public function Get_All_Sections(){
+        $sql = $this->connect()->prepare("SELECT * FROM sections");
+        $sql->execute();
+        $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array($lesson,$sql);
+    }
+    public function Get_All_Sections_Lessons(){
+        $sql = $this->connect()->prepare("SELECT s.title AS section_title, l.lesson_title AS lesson_title, l.link, l.content
+              FROM sections s
+              JOIN lessons l ON s.id = l.section_id
+              ORDER BY s.id, l.lesson_id");
+        $sql->execute();
+        $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array($lesson,$sql);
+    }
+
 
 }
 ?>

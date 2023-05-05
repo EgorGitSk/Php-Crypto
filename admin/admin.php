@@ -57,7 +57,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <th scope="col">Surname</th>
             <th scope="col">Email</th>
             <th scope="col">Delete</th>
-            <th scope="col">Admin</th>
         </tr>
         </thead>
         <tbody>
@@ -76,10 +75,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <input type="hidden" name="delete">
             <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
             <input type="submit" value="Delete user" class="btn btn-outline-danger"></form></td>';
-        echo '<td><form action="functions.php" method="post">
-            <input type="hidden" name="delete">
-            <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
-            <input type="submit" value="Admin rights" class="btn btn-outline-danger"></form></td>';
+
         echo '</tr>';
     }
     ?>

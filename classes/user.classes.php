@@ -1,5 +1,8 @@
 <?php
+if(!isset($_SESSION))
+{
     session_start();
+}
     class User extends db{
         public function ChangeName($name,$id){
             $sql = $this->connect()->prepare("SELECT * FROM users WHERE name = ?");
@@ -44,6 +47,15 @@
             $sql->execute(array($id));
             $contact = $sql->fetchAll(PDO::FETCH_ASSOC);
             return array($contact,$sql);
+        }
+        public function Get_All_Sections_Lessons(){
+            $sql = $this->connect()->prepare("SELECT s.title AS section_title, l.lesson_title AS lesson_title, l.link, l.content
+              FROM sections s
+              JOIN lessons l ON s.id = l.section_id
+              ORDER BY s.id, l.lesson_id");
+            $sql->execute();
+            $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($lesson,$sql);
         }
     }
 ?>

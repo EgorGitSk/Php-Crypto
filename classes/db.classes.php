@@ -17,8 +17,5 @@
                 die();
             }
         }
-        public function getConnection(){
-            return $this->connect();
-        }
     }
 ?>

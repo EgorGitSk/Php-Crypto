@@ -13,9 +13,10 @@ for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function() {
       var current = document.getElementsByClassName("active dontHover");
       current[0].className = current[0].className.replace(" active dontHover", "");
-      crypto_img.src = "img/"+this.id+".png";
+      crypto_img.src = "img/learn/"+this.id+".png";
       crypto_name.innerHTML=this.id;
       crypto_text.innerText=info[this.id];
       this.className += " active dontHover";
     });
   }
+
