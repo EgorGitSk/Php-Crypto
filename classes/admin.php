@@ -101,6 +101,10 @@ class Admin extends Db{
         $sql->execute(array($name,$text,$id));
     }
     public function Delete_Learning($id){
+        $sql = $this->connect()->prepare("SELECT * FROM learn where id = ?");
+        $sql->execute(array($id));
+        $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+        unlink('../img/learn/'.$lesson[0]['image']);
         $sql = $this->connect()->prepare("DELETE FROM learn WHERE id = ?");
         $sql->execute(array($id));
     }

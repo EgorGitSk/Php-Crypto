@@ -78,13 +78,13 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             echo '<td>'.'<img src="../img/learn/'.$learn[$i]["image"].'" width="200" height="200" alt="">'.'</td>';
 
             echo '<td>
-            <input type="hidden" name="change_faq">
+            <input type="hidden" name="change_learning">
             <input type="hidden" name="id" value="' . $learn[$i]["id"] . '">
             <input type="submit" value="Change data" class="btn btn-outline-success"></form></td>';
             echo '<td><form action="functions.php" method="post">
-            <input type="hidden" name="delete_faq">
+            <input type="hidden" name="delete_learning">
             <input type="hidden" name="id" value="' . $learn[$i]["id"] . '">
-            <input type="submit" value="Delete faq" class="btn btn-outline-danger"></form></td>';
+            <input type="submit" value="Delete Learning" class="btn btn-outline-danger"></form></td>';
             echo '</tr>';
         }
         ?>

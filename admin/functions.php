@@ -83,7 +83,7 @@ if(isset($_POST['add_learning']) && isset($_FILES['image'])){
               $img_ex_lc = strtolower($img_ex);
               $allowed_exs = array("jpg","jpeg","png");
               if(in_array($img_ex_lc,$allowed_exs)){
-                  $new_img_name = uniqid("IMG-",true).'.'.$img_ex_lc;
+                  $new_img_name = $name.'.'.$img_ex_lc;
                   $img_upload_path = '../img/learn/'.$new_img_name;
                   move_uploaded_file($tmp_name,$img_upload_path);
                   $change->Add_Learning($name,$text,$new_img_name);
@@ -98,5 +98,10 @@ if(isset($_POST['add_learning']) && isset($_FILES['image'])){
     }
 }else{
     header("Location: ./learning.php?error=imageisnotset");
+}
+if(isset($_POST['delete_learning'])){
+    $id = $_POST['id'];
+    $change->Delete_Learning($id);
+    header("Location: ./learning.php?error=learningdeleted");
 }
 ?>
