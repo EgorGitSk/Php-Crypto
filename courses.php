@@ -67,33 +67,111 @@ $user = new User();
                             <span class="nav__name">Home</span>
                         </a>
                     </div>
+                    <div class="nav__items">
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class="fas fa-dot-circle"></i>
+                                <span class="nav__name">Section 1</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item" id="les1-1">Lesson 1</a>
+                                    <a href="#" class="nav__dropdown-item" id="les2-1">Lesson 2</a>
+                                    <a href="#" class="nav__dropdown-item" id="les3-1">Lesson 3</a>
+                                    <a href="#" class="nav__dropdown-item" id="les4-1">Lesson 4</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav__items">
 
-                            <?php
-                            $result = $user->Get_All_Sections_Lessons();
-                            $sl = $result[0];
-                            $sql = $result[1];
-                            $current_section = '';
-                            for($i = 0; $i < $sql->rowCount(); $i++){
-                                if ($sl[$i]['section_title'] != $current_section) {
-                                    echo '<div class="nav__items">
-                                        <div class="nav__dropdown">';
-                                    echo '<a href="#" class="nav__link">';
-                                    echo '<i class="fas fa-dot-circle"></i>';
-                                    echo '<span class="nav__name">'.$sl[$i]['section_title'].'</span>';
-                                    echo "<i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i></a>";
-                                    // Set the current section to the new section
-                                    $current_section = $sl[$i]['section_title'];
-                                }
-                                echo '<div class="nav__dropdown-collapse">
-                                      <div class="nav__dropdown-content">';
-                                // Print the lesson for the current section
-                                echo '<a href="#" class="nav__dropdown-item" id="les1-1">'.$sl[$i]['lesson_title'].'</a>';
-                                echo '</div>
-                </div>    
-                </div>
-                </div>';
-                            }
-                            ?>
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class="fas fa-dot-circle"></i>
+                                <span class="nav__name">Section 2</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="nav__items">
+
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class="fas fa-dot-circle"></i>
+                                <span class="nav__name">Section 3</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="nav__items">
+
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class="fas fa-dot-circle"></i>
+                                <span class="nav__name">Section 4</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="nav__items">
+
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class="fas fa-dot-circle"></i>
+                                <span class="nav__name">Section 5 - Wallets</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item" id="les5-1">Paper Wallet</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                    <a href="#" class="nav__dropdown-item">Lesson</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
 
 

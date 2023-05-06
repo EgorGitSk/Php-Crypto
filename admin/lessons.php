@@ -35,6 +35,12 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     <li class="nav-item">
         <a class="nav-link" href="answers.php">Answers</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="learning.php">Learning</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="lessons.php">Lessons</a>
+    </li>
 </ul>
 <div class="jumbotron">
     <br>
@@ -126,6 +132,10 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         $current_section = '';
         for($i = 0; $i < $sql->rowCount(); $i++){
             if ($sl[$i]['section_title'] != $current_section) {
+                echo '</div>
+                </div>    
+                </div>
+                </div>';
                 echo '<div class="nav__items">
                       <div class="nav__dropdown">';
                 echo '<a href="#" class="nav__link">';
@@ -139,10 +149,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
                     <div class="nav__dropdown-content">';
             // Print the lesson for the current section
             echo '<a href="#" class="nav__dropdown-item" id="les1-1">'.$sl[$i]['lesson_title'].'</a>';
-            echo '</div>
-                </div>    
-                </div>
-                </div>';
+
         }
         ?>
 

@@ -44,44 +44,46 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 </ul>
 <div class="jumbotron">
     <br>
-    <h2> Modify FAQ table</h2>
-    <form action="functions.php" method="post">
-        <input type="hidden" name="add_faq"><br>
+    <h2> Modify Learning table</h2>
+    <form action="functions.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="add_learning"><br>
         <input type="text" name="name" id="name" placeholder="name"><br>
         <textarea name="text" cols="60" rows="5"></textarea><br>
-        <input type="submit" value="Add FAQ">
+        <input type="file" name="image"><br>
+        <input type="submit" value="Add Learning">
     </form>
-    <h2>Prices table</h2>
+    <h2>Learning table</h2>
     <table class="table ">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Text</th>
+            <th scope="col">Image</th>
             <th scope="col">Change</th>
             <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
         <?php
-        $prices = $admin->Get_All_Faqs();
-        $faq = $prices[0];
+        $prices = $admin->Get_All_Learning();
+        $learn = $prices[0];
         $sql = $prices[1];
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
-            echo '<th scope="row">'. $faq[$i]["id"] .'</th>>';
-            echo '<td>'.'<input type="text" value="'.$faq[$i]["name"].'" name="name" size="50" placeholder="'.$faq[$i]["id"].'">'.'</td>';
-            echo '<td>'.'<textarea name="text" cols="60" rows="5">'.$faq[$i]["text"].'</textarea>'.'</td>';
-
+            echo '<th scope="row">'. $learn[$i]["id"] .'</th>>';
+            echo '<td>'.'<input type="text" value="'.$learn[$i]["name"].'" name="name" size="50" placeholder="'.$learn[$i]["id"].'">'.'</td>';
+            echo '<td>'.'<textarea name="text" cols="60" rows="5">'.$learn[$i]["text"].'</textarea>'.'</td>';
+            echo '<td>'.'<img src="../img/learn/'.$learn[$i]["image"].'" width="200" height="200" alt="">'.'</td>';
 
             echo '<td>
             <input type="hidden" name="change_faq">
-            <input type="hidden" name="id" value="' . $faq[$i]["id"] . '">
+            <input type="hidden" name="id" value="' . $learn[$i]["id"] . '">
             <input type="submit" value="Change data" class="btn btn-outline-success"></form></td>';
             echo '<td><form action="functions.php" method="post">
             <input type="hidden" name="delete_faq">
-            <input type="hidden" name="id" value="' . $faq[$i]["id"] . '">
+            <input type="hidden" name="id" value="' . $learn[$i]["id"] . '">
             <input type="submit" value="Delete faq" class="btn btn-outline-danger"></form></td>';
             echo '</tr>';
         }

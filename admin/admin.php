@@ -35,6 +35,12 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     <li class="nav-item">
         <a class="nav-link" href="answers.php">Answers</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="learning.php">Learning</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="lessons.php">Lessons</a>
+    </li>
 </ul>
 <div class="jumbotron">
     <br>

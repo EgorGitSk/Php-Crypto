@@ -67,4 +67,36 @@ if(isset($_POST['delete_faq'])){
     $change->Delete_Faqs($id);
     header("Location: ./faq.php?error=faqdeleted");
 }
+if(isset($_POST['add_learning']) && isset($_FILES['image'])){
+    $name = $_POST['name'];
+    $text = $_POST['text'];
+    $img_name = $_FILES['image']['name'];
+    $img_size = $_FILES['image']['size'];
+    $tmp_name = $_FILES['image']['tmp_name'];
+    $error = $_FILES['image']['error'];
+    if ($error === 0){
+        if($img_size > 350000){
+            $em = "image is too big";
+            header("Location: ./learning.php?error=$em");
+        }else{
+              $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+              $img_ex_lc = strtolower($img_ex);
+              $allowed_exs = array("jpg","jpeg","png");
+              if(in_array($img_ex_lc,$allowed_exs)){
+                  $new_img_name = uniqid("IMG-",true).'.'.$img_ex_lc;
+                  $img_upload_path = '../img/learn/'.$new_img_name;
+                  move_uploaded_file($tmp_name,$img_upload_path);
+                  $change->Add_Learning($name,$text,$new_img_name);
+                  header("Location: ./learning.php?error=imageadded");
+              }else{
+                  $em = "wrong format";
+                  header("Location: ./learning.php?error=$em");
+              }
+        }
+    }else{
+        header("Location: ./learning.php?error=error");
+    }
+}else{
+    header("Location: ./learning.php?error=imageisnotset");
+}
 ?>

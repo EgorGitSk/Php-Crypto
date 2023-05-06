@@ -86,7 +86,23 @@ class Admin extends Db{
         $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($lesson,$sql);
     }
-
-
+    public function Get_All_Learning(){
+        $sql = $this->connect()->prepare("SELECT * FROM learn");
+        $sql->execute();
+        $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return array($lesson,$sql);
+    }
+    public function Add_Learning($name,$text,$image){
+        $sql = $this->connect()->prepare("INSERT INTO learn (`name`, `text`,`image`) VALUES (?, ?, ?)");
+        $sql->execute(array($name,$text,$image));
+    }
+    public function Change_Learning($name,$text,$id){
+        $sql = $this->connect()->prepare("UPDATE learn SET `name` = ?,`text` = ? WHERE id = ?");
+        $sql->execute(array($name,$text,$id));
+    }
+    public function Delete_Learning($id){
+        $sql = $this->connect()->prepare("DELETE FROM learn WHERE id = ?");
+        $sql->execute(array($id));
+    }
 }
 ?>

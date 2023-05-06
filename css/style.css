@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: 'Bellefair', sans-serif;
 }
+
 .cookies-container{
     position: fixed;
 
@@ -1273,3 +1274,7 @@ footer .logo{
     transform: translateX(0%);
 
 }
+.theme-text {
+    color: #474af0;
+}
+

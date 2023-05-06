@@ -57,5 +57,11 @@ if(!isset($_SESSION))
             $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
             return array($lesson,$sql);
         }
+        public function Get_All_Learning(){
+            $sql = $this->connect()->prepare("SELECT * FROM learn");
+            $sql->execute();
+            $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($lesson,$sql);
+        }
     }
 ?>
