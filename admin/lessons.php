@@ -82,7 +82,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     <table class="table ">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">lesson_id</th>
             <th scope="col">Section_id</th>
             <th scope="col">lesson_title</th>
             <th scope="col">Link</th>
@@ -100,11 +99,10 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
-            echo '<td>'.$lesson[$i]["lesson_id"].'</td>';
             echo '<td>'.$lesson[$i]["section_id"].'</td>';
-            echo '<td>'.$lesson[$i]["lesson_title"].'</td>';
-            echo '<td>'.$lesson[$i]["link"].'</td>';
-            echo '<td>'.'<textarea name="answer" cols="40">'.$lesson[$i]["content"].'</textarea>'.'</td>';
+            echo '<td>'.'<input type="text" value="'.$lesson[$i]["lesson_title"].'" name="lesson_title" size="30" placeholder="'.$lesson[$i]["lesson_title"].'">'.'</td>';
+            echo '<td>'.'<input type="text" value="'.$lesson[$i]["link"].'" name="link" size="40" placeholder="'.$lesson[$i]["link"].'">'.'</td>';
+            echo '<td>'.'<textarea name="content" cols="40">'.$lesson[$i]["content"].'</textarea>'.'</td>';
 
             echo '<td>
             <input type="hidden" name="change_lesson">
@@ -124,34 +122,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 
 
 </div>
-
-        <?php
-        $result = $admin->Get_All_Sections_Lessons();
-        $sl = $result[0];
-        $sql = $result[1];
-        $current_section = '';
-        for($i = 0; $i < $sql->rowCount(); $i++){
-            if ($sl[$i]['section_title'] != $current_section) {
-                echo '</div>
-                </div>    
-                </div>
-                </div>';
-                echo '<div class="nav__items">
-                      <div class="nav__dropdown">';
-                echo '<a href="#" class="nav__link">';
-                echo '<i class="fas fa-dot-circle"></i>';
-                echo '<span class="nav__name">'.$sl[$i]['section_title'].'</span>';
-                echo "<i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i></a>";
-                // Set the current section to the new section
-                $current_section = $sl[$i]['section_title'];
-            }
-            echo '<div class="nav__dropdown-collapse">
-                    <div class="nav__dropdown-content">';
-            // Print the lesson for the current section
-            echo '<a href="#" class="nav__dropdown-item" id="les1-1">'.$sl[$i]['lesson_title'].'</a>';
-
-        }
-        ?>
 
 </body>
 </html>

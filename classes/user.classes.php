@@ -49,7 +49,7 @@ if(!isset($_SESSION))
             return array($contact,$sql);
         }
         public function Get_All_Sections_Lessons(){
-            $sql = $this->connect()->prepare("SELECT s.title AS section_title, l.lesson_title AS lesson_title, l.link, l.content
+            $sql = $this->connect()->prepare("SELECT lesson_id,s.title AS section_title, l.lesson_title AS lesson_title, l.link, l.content
               FROM sections s
               JOIN lessons l ON s.id = l.section_id
               ORDER BY s.id, l.lesson_id");
@@ -60,6 +60,12 @@ if(!isset($_SESSION))
         public function Get_All_Learning(){
             $sql = $this->connect()->prepare("SELECT * FROM learn");
             $sql->execute();
+            $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($lesson,$sql);
+        }
+        public function Get_Lesson_By_Id($id){
+            $sql = $this->connect()->prepare("SELECT * FROM lessons WHERE lesson_id = ?");
+            $sql->execute(array($id));
             $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
             return array($lesson,$sql);
         }

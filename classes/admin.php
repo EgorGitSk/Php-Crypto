@@ -71,6 +71,10 @@ class Admin extends Db{
         $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($lesson,$sql);
     }
+    public function Change_Lesson($title,$link,$content,$id){
+        $sql = $this->connect()->prepare("UPDATE lessons SET `lesson_title` = ?,`link` = ?, `content` = ? WHERE lesson_id = ?");
+        $sql->execute(array($title,$link,$content,$id));
+    }
     public function Get_All_Sections(){
         $sql = $this->connect()->prepare("SELECT * FROM sections");
         $sql->execute();
