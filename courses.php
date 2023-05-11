@@ -29,9 +29,7 @@ $user = new User();
 <body>
 <!--Preloader start-->
 
-<div class="preloader">
-    <span></span>
-</div>
+
 
 <!--Preloader end-->
 

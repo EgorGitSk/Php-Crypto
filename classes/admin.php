@@ -75,6 +75,10 @@ class Admin extends Db{
         $sql = $this->connect()->prepare("UPDATE lessons SET `lesson_title` = ?,`link` = ?, `content` = ? WHERE lesson_id = ?");
         $sql->execute(array($title,$link,$content,$id));
     }
+    public function Delete_Lesson($id){
+        $sql = $this->connect()->prepare("DELETE FROM lessons WHERE id = ?");
+        $sql->execute(array($id));
+    }
     public function Get_All_Sections(){
         $sql = $this->connect()->prepare("SELECT * FROM sections");
         $sql->execute();

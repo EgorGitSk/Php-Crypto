@@ -112,4 +112,9 @@ if(isset($_POST['change_lesson'])){
     $change->Change_Lesson($title,$link,$content,$id);
     header("Location: ./lessons.php?error=lessonchanged");
 }
+if(isset($_POST['delete_lesson'])){
+    $id = $_POST['id'];
+    $change->Delete_Lesson($id);
+    header("Location: ./lessons.php?error=lessondeleted");
+}
 ?>
