@@ -76,5 +76,9 @@ if(!isset($_SESSION))
             $note = $sql->fetchAll(PDO::FETCH_ASSOC);
             return array($note,$sql);
         }
+        public function Add_Notes($title_note,$note_text,$user_id){
+            $sql = $this->connect()->prepare("INSERT INTO notes (`title_note`, `note_text`,`user_id`) VALUES (?, ?, ?)");
+            $sql->execute(array($title_note,$note_text,$user_id));
+        }
     }
 ?>

@@ -9,11 +9,12 @@ if(!isset($_SESSION))
 if (isset($_SESSION["name"])) {
 
     $user = new User();
-    if(isset($_GET['show'])){
-        $_SESSION['popup'] = true;
-    }
-    if (isset($_GET['show']) && isset($_GET['show']) == false){
-        $_SESSION['popup'] = false;
+    if (isset($_GET['show'])) {
+        if ($_GET['show'] == 'true') {
+            $_SESSION['popup'] = true;
+        } else {
+            $_SESSION['popup'] = false;
+        }
     }
 }else {
     header("Location: index.php?error=usersonly");
@@ -48,16 +49,21 @@ if($_SESSION['popup'] == true){
 
             </header>
             </a>
-            <form action="#">
+            <form action="includes/notes.inc.php" method="post">
+                <input type="hidden" name="add_note">
+                <?php
+
+                    echo '<input type="hidden" name="user_id" value="'.$_SESSION["id"].'">';
+                ?>
                 <div class="row title">
                     <label>Title</label>
-                    <input type="text" spellcheck="false">
+                    <input type="text" name="title_note">
                 </div>
                 <div class="row description">
                     <label>Description</label>
-                    <textarea spellcheck="false"></textarea>
+                    <textarea name="note_text" placeholder="Your Note"> </textarea>
                 </div>
-                <button>Add Note</button>
+                <input type="submit" value="Submit">
             </form>
         </div>
     </div>
@@ -97,7 +103,7 @@ if($_SESSION['popup'] == true){
 </div>
 
 
-<script src="jss/script.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
