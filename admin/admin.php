@@ -59,6 +59,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         <thead class="thead-dark">
         <tr>
             <th scope="col">Id</th>
+            <th scope="col">Registered</th>
             <th scope="col">Name</th>
             <th scope="col">Surname</th>
             <th scope="col">Email</th>
@@ -74,10 +75,12 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     for($i = 0; $i < $sql->rowCount(); $i++){
         echo "<tr>";
         echo '<th scope="row">'. $user[$i]["id"] .'</th>';
+        echo '<td>'.$user[$i]["created"].'</td>';
         echo '<td>'.$user[$i]["name"] .'</td>';
         echo '<td>'.$user[$i]["surname"] .'</td>';
         echo '<td>'.$user[$i]["email"] .'</td>';
         echo '<td><form action="functions.php" method="post">
+            <input type="hidden" name=delete_user">
             <input type="hidden" name="delete">
             <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
             <input type="submit" value="Delete user" class="btn btn-outline-danger"></form></td>';

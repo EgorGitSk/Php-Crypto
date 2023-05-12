@@ -4,7 +4,7 @@ include '../classes/admin.php';
 include "../classes/signup.classes.php";
 include "../classes/signup-contr.classes.php";
 $change = new Admin();
-if(isset($_POST['delete'])){
+if(isset($_POST['delete_user'])){
     $id = $_POST['id'];
     $change->Delete_User($id);
     header("Location: ./admin.php?error=userdeleted");
