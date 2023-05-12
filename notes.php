@@ -7,6 +7,7 @@ if(!isset($_SESSION))
     $_SESSION['popup'] = false;
 }
 if (isset($_SESSION["name"])) {
+    $_SESSION['popup'] = false;
 
     $user = new User();
     if (isset($_GET['show'])) {
@@ -29,8 +30,16 @@ if (isset($_SESSION["name"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Iconscout Link For Icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <style>
+        .button-popup {
+            border: none;
+            background-color: transparent ;
+        }
+    </style>
 </head>
 <body>
+
 <?php
 if($_SESSION['popup'] == true){
    echo ' <div class="popup-box show">';
@@ -68,7 +77,9 @@ if($_SESSION['popup'] == true){
         </div>
     </div>
 </div>
+
 <div class="wrapper">
+
     <a href="notes.php?show=true">
     <li class="add-box">
         <div class="icon"><i class="uil uil-plus" ></i></div>
@@ -89,11 +100,26 @@ if($_SESSION['popup'] == true){
         echo '<span>'. $note[$i]["date_created"] .'</span>';
         echo '<div class="settings">
                 <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
-                <ul class="menu ">
-                    <li onclick=""><i class="uil uil-pen"></i>Edit</li>
-                    <li onclick=""><i class="uil uil-trash"></i>Delete</li>
+                <ul class="menu">
+                    <form action="includes/notes.inc.php" method="post">
+                    <input type="hidden" name="delete_note">
+                    <li onclick=""><i class="uil uil-trash"></i><input type="submit" name="delete_note" class="button-popup" value="Delete"></li>
+                    <input type="hidden" name="note_id" value="' . $note[$i]["id"] . '"> 
+                    </form>
+                    <form action="includes/notes.inc.php" method="post">
+                    <input type="hidden" name="edit_note">
+                    <li onclick=""><i class="uil uil-pen"></i><input type="submit" name="edit_note" class="button-popup" value="Edit"></li>
+                    <input type="hidden" name="note_id" value="' . $note[$i]["id"] . '"> 
+                    </form>
+                    
+                    
+                    
                 </ul>
             </div>';
+
+
+        echo '';
+
         echo '</div>
     </li>';
 
@@ -101,6 +127,7 @@ if($_SESSION['popup'] == true){
     }
     ?>
 </div>
+
 
 
 <script src="js/script.js"></script>

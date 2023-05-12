@@ -9,6 +9,7 @@
         include "../classes/contact.php";
         $send = new ContactForm();
         $send->SendMessage($user_id,$name,$email,$message);
+
         header("Location: ../index.php?error=messagesent");
     }
 ?>

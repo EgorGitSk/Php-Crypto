@@ -25,6 +25,78 @@ $user = new User();
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title></title>
+    <style>
+        .open-button {
+            background-color: #555;
+            color: white;
+            padding: 12px 12px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }
+
+        /* The popup chat - hidden by default */
+        .chat-popup {
+        color: white;
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+
+            max-width: 300px;
+            padding: 10px;
+            background-color: black;
+        }
+
+        /* Full-width textarea */
+        .form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            resize: none;
+            min-height: 200px;
+        }
+
+        /* When the textarea gets focus, do something */
+        .form-container textarea:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Set a style for the submit/send button */
+        .form-container .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
 <!--Preloader start-->
@@ -87,6 +159,10 @@ $user = new User();
                     <i class="fas fa-phone"></i>
                     <span class="nav__name">Contact us</span>
                 </a>
+                <a href="notes.php" class="nav__link active">
+                    <i class="fas fa-pencil"></i>
+                    <span class="nav__name">Notes</span>
+                </a>
                 <a href="includes/logout.inc.php" class="nav__link nav__logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav__name">Log Out</span>
@@ -108,6 +184,24 @@ $user = new User();
             ?>
         </div>
     </section>
+    <button class="open-button" onclick="openForm()">Add Notes</button>
+
+    <div class="chat-popup" id="myForm">
+        <form action="includes/notes.inc.php" method="post" class="form-container">
+            <h3>Add Notes</h3>
+            <input type="hidden" name="add_note">
+            <input type="hidden" name="add_note_main">
+            <?php
+            echo '<input type="hidden" name="user_id" value="'.$_SESSION["id"].'">';
+            ?>
+            <input type="text" name="title_note" placeholder="Title">
+                <br>
+            <textarea placeholder="Your note" name="title_note" required></textarea>
+
+            <button type="submit" class="btn">Add</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
     <div class="lesson-overview">
         <div class="overview">
             <p>Overview</p>
@@ -134,6 +228,15 @@ $user = new User();
 <script src="js/main-courses.js"></script>
 <script src="js/app.js"></script>
 <script src="js/lessons.js"></script>
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
 </body>
 </html>
 <?php

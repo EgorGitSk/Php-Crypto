@@ -80,5 +80,9 @@ if(!isset($_SESSION))
             $sql = $this->connect()->prepare("INSERT INTO notes (`title_note`, `note_text`,`user_id`) VALUES (?, ?, ?)");
             $sql->execute(array($title_note,$note_text,$user_id));
         }
+        public function Delete_Note($id){
+            $sql = $this->connect()->prepare("DELETE FROM notes WHERE id = ?");
+            $sql->execute(array($id));
+        }
     }
 ?>
