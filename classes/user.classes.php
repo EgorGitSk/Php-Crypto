@@ -69,5 +69,12 @@ if(!isset($_SESSION))
             $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
             return array($lesson,$sql);
         }
+
+        public function Ger_All_Notes($id){
+            $sql = $this->connect()->prepare("SELECT * FROM notes WHERE user_id = ?");
+            $sql->execute(array($id));
+            $note = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($note,$sql);
+        }
     }
 ?>

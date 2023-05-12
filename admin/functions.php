@@ -128,4 +128,15 @@ if(isset($_POST['add_section'])){
     $change->Add_Section($title);
     header("Location: ./lessons.php?error=sectionadded");
 }
+if(isset($_POST['delete_section'])){
+    $id = $_POST['id'];
+    $change->Delete_Section($id);
+    header("Location: ./lessons.php?error=sectiondeleted");
+}
+if(isset($_POST['change_section'])){
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $change->Change_Section($title,$id);
+    header("Location: ./lessons.php?error=sectionchanged");
+}
 ?>

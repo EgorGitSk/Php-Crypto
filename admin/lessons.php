@@ -69,12 +69,12 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
             echo '<th scope="row">'. $section[$i]["id"] .'</th>>';
-            echo '<td>'.'<textarea name="answer" cols="40">'.$section[$i]["title"].'</textarea>'.'</td>';
+            echo '<td>'.'<textarea name="title" cols="40">'.$section[$i]["title"].'</textarea>'.'</td>';
             echo '<td>
             <input type="hidden" name="change_section">
             <input type="hidden" name="id" value="' . $section[$i]["id"] . '">
             <input type="submit" value="Change Section" class="btn btn-outline-success"></form></td>';
-            echo '<td>
+            echo '<td><form action="functions.php" method="post">
             <input type="hidden" name="delete_section">
             <input type="hidden" name="id" value="' . $section[$i]["id"] . '">
             <input type="submit" value="Delete Section" class="btn btn-outline-danger"></form></td>';
@@ -95,9 +95,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             $section = $sections[0];
             $sql = $sections[1];
             for($i = 0; $i < $sql->rowCount(); $i++){
-
                 echo '<option value="'. $section[$i]["id"] .'">'. $section[$i]["title"] .'</option>';
-
             }
             ?>
         </select>
@@ -134,7 +132,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
             <input type="hidden" name="change_lesson">
             <input type="hidden" name="id" value="' . $lesson[$i]["lesson_id"] . '">
             <input type="submit" value="Change Lesson" class="btn btn-outline-success"></form></td>';
-            echo '<td>
+            echo '<td><form action="functions.php" method="post">
             <input type="hidden" name="delete_lesson">
             <input type="hidden" name="id" value="' . $lesson[$i]["lesson_id"] . '">
             <input type="submit" value="Delete Lesson" class="btn btn-outline-danger"></form></td>';

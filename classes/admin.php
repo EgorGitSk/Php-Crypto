@@ -72,11 +72,11 @@ class Admin extends Db{
         return array($lesson,$sql);
     }
     public function Change_Lesson($title,$link,$content,$id){
-        $sql = $this->connect()->prepare("UPDATE lessons SET `lesson_title` = ?,`link` = ?, `content` = ? WHERE lesson_id = ?");
+        $sql = $this->connect()->prepare("UPDATE lessons SET `lesson_title` = ?,`link` = ?, `content` = ? WHERE `lesson_id` = ?");
         $sql->execute(array($title,$link,$content,$id));
     }
     public function Delete_Lesson($id){
-        $sql = $this->connect()->prepare("DELETE FROM lessons WHERE id = ?");
+        $sql = $this->connect()->prepare("DELETE FROM lessons WHERE `lesson_id` = ?");
         $sql->execute(array($id));
     }
     public function Add_Lesson($lesson_title,$link,$content,$section_id){
@@ -89,9 +89,17 @@ class Admin extends Db{
         $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($lesson,$sql);
     }
+    public function Change_Section($title,$id){
+        $sql = $this->connect()->prepare("UPDATE sections SET `title` = ? WHERE `id` = ?");
+        $sql->execute(array($title,$id));
+    }
     public function Add_Section($title){
         $sql = $this->connect()->prepare("INSERT INTO sections (`title`) VALUES (?)");
         $sql->execute(array($title));
+    }
+    public function Delete_Section($id){
+        $sql = $this->connect()->prepare("DELETE FROM sections WHERE id = ?");
+        $sql->execute(array($id));
     }
     public function Get_All_Sections_Lessons(){
         $sql = $this->connect()->prepare("SELECT s.title AS section_title, l.lesson_title AS lesson_title, l.link, l.content
