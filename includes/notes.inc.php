@@ -10,7 +10,7 @@ if(isset($_POST['add_note'])){
     $note_text = $_POST['note_text'];
 
     $add->Add_Notes($title_note,$note_text,$user_id);
-    if(isset($_POST['add_note'])){
+    if(isset($_POST['add_note_main'])){
         header("Location: ../courses.php?error=noteadded");
     }else{
         header("Location: ../notes.php?error=noteadded");

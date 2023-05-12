@@ -106,11 +106,7 @@ if($_SESSION['popup'] == true){
                     <li onclick=""><i class="uil uil-trash"></i><input type="submit" name="delete_note" class="button-popup" value="Delete"></li>
                     <input type="hidden" name="note_id" value="' . $note[$i]["id"] . '"> 
                     </form>
-                    <form action="includes/notes.inc.php" method="post">
-                    <input type="hidden" name="edit_note">
-                    <li onclick=""><i class="uil uil-pen"></i><input type="submit" name="edit_note" class="button-popup" value="Edit"></li>
-                    <input type="hidden" name="note_id" value="' . $note[$i]["id"] . '"> 
-                    </form>
+                    
                     
                     
                     
