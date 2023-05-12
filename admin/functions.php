@@ -96,8 +96,6 @@ if(isset($_POST['add_learning']) && isset($_FILES['image'])){
     }else{
         header("Location: ./learning.php?error=error");
     }
-}else{
-    header("Location: ./learning.php?error=imageisnotset");
 }
 if(isset($_POST['delete_learning'])){
     $id = $_POST['id'];
@@ -116,5 +114,18 @@ if(isset($_POST['delete_lesson'])){
     $id = $_POST['id'];
     $change->Delete_Lesson($id);
     header("Location: ./lessons.php?error=lessondeleted");
+}
+if(isset($_POST['add_lesson'])){
+    $lesson_title = $_POST['lesson_title'];
+    $link = $_POST['link'];
+    $content = $_POST['content'];
+    $section_id = $_POST['section_id'];
+    $change->Add_Lesson($lesson_title,$link,$content,$section_id);
+    header("Location: ./lessons.php?error=lessonadded");
+}
+if(isset($_POST['add_section'])){
+    $title = $_POST['title'];
+    $change->Add_Section($title);
+    header("Location: ./lessons.php?error=sectionadded");
 }
 ?>

@@ -45,6 +45,11 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
 <div class="jumbotron">
     <br>
     <h2>Sections</h2>
+    <form action="functions.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="add_section"><br>
+        <input type="text" name="title" id="title" placeholder="title"><br>
+        <input type="submit" value="Add section">
+    </form>
     <table class="table ">
         <thead class="thead-dark">
         <tr>
@@ -79,6 +84,27 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     </table>
     <br>
     <h2>Lessons</h2>
+    <form action="functions.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="add_lesson"><br>
+        <input type="text" name="lesson_title" id="lesson_title" placeholder="lesson_title"><br>
+        <input type="text" name="link" id="link" placeholder="Link"><br>
+        <textarea name="content" cols="60" rows="5"></textarea><br>
+        <select name="section_id" id="section_id">
+            <?php
+            $sections = $admin->Get_All_Sections();
+            $section = $sections[0];
+            $sql = $sections[1];
+            for($i = 0; $i < $sql->rowCount(); $i++){
+
+                echo '<option value="'. $section[$i]["id"] .'">'. $section[$i]["title"] .'</option>';
+
+            }
+            ?>
+        </select>
+        <br><br>
+        <input type="submit" value="Add lesson">
+        <br>
+    </form>
     <table class="table ">
         <thead class="thead-dark">
         <tr>

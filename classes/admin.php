@@ -79,11 +79,19 @@ class Admin extends Db{
         $sql = $this->connect()->prepare("DELETE FROM lessons WHERE id = ?");
         $sql->execute(array($id));
     }
+    public function Add_Lesson($lesson_title,$link,$content,$section_id){
+        $sql = $this->connect()->prepare("INSERT INTO lessons (`lesson_title`,`link`,`content`,`section_id`) VALUES (?,?,?,?)");
+        $sql->execute(array($lesson_title,$link,$content,$section_id));
+    }
     public function Get_All_Sections(){
         $sql = $this->connect()->prepare("SELECT * FROM sections");
         $sql->execute();
         $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
         return array($lesson,$sql);
+    }
+    public function Add_Section($title){
+        $sql = $this->connect()->prepare("INSERT INTO sections (`title`) VALUES (?)");
+        $sql->execute(array($title));
     }
     public function Get_All_Sections_Lessons(){
         $sql = $this->connect()->prepare("SELECT s.title AS section_title, l.lesson_title AS lesson_title, l.link, l.content
