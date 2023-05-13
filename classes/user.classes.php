@@ -103,7 +103,7 @@ WHERE comments.comment_id =  ?;");
             return array($comment,$sql);
         }
         public function Get_Replies($lesson_id){
-            $sql = $this->connect()->prepare("SELECT reply,date,users.name,users.surname FROM replies 
+            $sql = $this->connect()->prepare("SELECT reply,date,users.name,users.surname,user_id,comment_id,replies.id as reply_id FROM replies 
             join users on replies.user_id = users.id
             WHERE comment_id = ?;");
             $sql->execute(array($lesson_id));
@@ -114,12 +114,17 @@ WHERE comments.comment_id =  ?;");
             $sql = $this->connect()->prepare("INSERT INTO comments (`comment`, `lesson_id`,`user_id`) VALUES (?, ?, ?)");
             $sql->execute(array($comment,$lesson_id,$user_id));
         }
+
+        public function Delete_Comment($id){
+            $sql = $this->connect()->prepare("DELETE FROM comments WHERE comment_id = ?");
+            $sql->execute(array($id));
+        }
         public function Add_Reply($reply,$comment_id,$user_id){
             $sql = $this->connect()->prepare("INSERT INTO replies (`reply`, `comment_id`,`user_id`) VALUES (?, ?, ?)");
             $sql->execute(array($reply,$comment_id,$user_id));
         }
-        public function Delete_Comment($id){
-            $sql = $this->connect()->prepare("DELETE FROM comments WHERE comment_id = ?");
+        public function Delete_Reply($id){
+            $sql = $this->connect()->prepare("DELETE FROM replies WHERE id = ?");
             $sql->execute(array($id));
         }
     }

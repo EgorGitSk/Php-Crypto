@@ -15,6 +15,6 @@ if(isset($_GET['lesson_id'])){
     $_SESSION['lesson_name'] = $lesson_name;
     $_SESSION['lesson_description'] = $lesson_description;
     $_SESSION['video_link'] = $video_link;
-    header("Location: ../courses.php?");
+    header("Location: ../courses.php?lesson_id=". $lesson_id);
 }
 ?>

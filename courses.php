@@ -196,6 +196,7 @@ if(isset($_SESSION['lesson_id'])){
             <input type="hidden" name="add_note">
             <input type="hidden" name="add_note_main">
             <?php
+            echo '<input type="hidden" name="lesson_id" value = "'.$lesson_id.'">';
             echo '<input type="hidden" name="user_id" value="'.$_SESSION["id"].'">';
             ?>
             <input type="text" name="title_note" placeholder="Title">
@@ -247,7 +248,7 @@ if(isset($_SESSION['lesson_id'])){
                             echo '<input type="submit"  value="Reply" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
                             echo '</form>';
                             if($_SESSION['id'] == $comment[$i]["user_id"] || $_SESSION['admin'] == 1){
-                                echo '<form action="includes/comments.inc.php" method="post" style="display: inline;>';
+                                echo '<form action="includes/comments.inc.php" method="post" style="display: inline;">';
                                 echo '<input type="hidden" name="delete_comment">';
                                 echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]["comment_id"].'">';
                                 echo '<input type="submit"  value="Delete Comment" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
