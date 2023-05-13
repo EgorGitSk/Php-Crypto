@@ -201,7 +201,7 @@ if(isset($_SESSION['lesson_id'])){
             ?>
             <input type="text" name="title_note" placeholder="Title">
                 <br>
-            <textarea placeholder="Your note" name="title_note" required></textarea>
+            <textarea placeholder="Your note" name="note_text" required></textarea>
 
             <button type="submit" class="btn">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>

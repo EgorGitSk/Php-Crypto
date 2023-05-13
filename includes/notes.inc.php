@@ -2,7 +2,10 @@
 include "../classes/db.classes.php";
 include "../classes/user.classes.php";
 $get = new User();
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 if(isset($_POST['add_note'])){
     $_SESSION['popup'] = false;
     $user_id = $_POST['user_id'];
@@ -29,7 +32,7 @@ if(isset($_POST['add_note'])){
 }
 if(isset($_POST['delete_note'])){
     $id = $_POST['note_id'];
-    $add->Delete_Note($id);
+    $get->Delete_Note($id);
     header("Location: ../notes.php?error=notedeleted");
 }
 ?>
