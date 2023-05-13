@@ -7,6 +7,11 @@ if (!isset($_SESSION["name"])) {
 include_once "classes/db.classes.php";
 include_once "classes/user.classes.php";
 $user = new User();
+if(isset($_SESSION['lesson_id'])){
+    $lesson_id = $_SESSION['lesson_id'];
+}else{
+    $lesson_id = 1;
+}
 ?>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -145,11 +150,10 @@ $user = new User();
                 for($i = 0; $i < $sql->rowCount(); $i++){
 
                     if ($sl[$i]['section_title'] != $current_section) {
-                        echo '<a href="index.php" class="nav__link active">';
-                        echo '<i class="fas fa-dot-circle"></i>';
+
                         echo '<span class="nav__name">'.$sl[$i]['section_title'].'</span>';
                         $current_section = $sl[$i]['section_title'];
-                        echo '</a>';
+
 
                     }
                     echo '<a href="parts/lesson_redirect.php?lesson_id='.$sl[$i]['lesson_id'].'" class="nav__dropdown-item" id="les1-1"> <i class="fas fa-dot-circle"></i> '.$sl[$i]['lesson_title'].'</a>';
@@ -227,37 +231,52 @@ $user = new User();
             <div class="row">
                 <div class="col-sm-5 col-md-6 col-12 pb-4">
                     <h1>Comments</h1>
-                    <div class="comment mt-4 text-justify float-left">
-                        <h4>Jhon Doe</h4>
-                        <span>- 12 May, 2023</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
-                    <div class="text-justify darker mt-4 float-right">
-                        <h4>Rob Simpson</h4>
-                        <span>- 12 May, 2023</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
-                    <div class="comment mt-4 text-justify">
-                        <h4>Jhon Doe</h4>
-                        <span>- 12 May, 2023</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
 
+                    <?php
+
+                    $comments = $user->Get_Comments($lesson_id);
+                    $comment = $comments[0];
+                    $sql = $comments[1];
+                    if($sql->rowCount()==0){
+                        echo '<div class="comment mt-4 text-justify">';
+                        echo '<h4>Be first to leave a comment!</h4>';
+                        echo '</div>';
+                    }else{
+                        for($i = 0; $i < $sql->rowCount(); $i++){
+                            echo '<div class="comment mt-4 text-justify"> ';
+                            echo '<h4>'. $comment[$i]["name"] . " " . $comment[$i]["surname"] .'</h4> ';
+                            echo '<span>-'.$comment[$i]["date"].'</span>';
+                            echo '<br>';
+                            echo '<p>'. $comment[$i]["comment"] .'</p>';
+                            echo '</div>';
+                            if($_SESSION['id'] == $comment[$i]["user_id"] || $_SESSION['admin'] == 1){
+                                echo '<form action="includes/comments.inc.php" method="post">';
+                                echo '<input type="hidden" name="delete_comment">';
+                                echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]['comment_id'].'">';
+                                echo '<input type="submit" id="post" value="Delete Comment" class="btn" style="background-color: white">';
+                                echo '</form>';
+                            }
+                        }
+                    }
+
+                    ?>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-                    <form id="align-form" class="form-comments">
+                    <form action="includes/comments.inc.php" id="align-form" class="form-comments" method="post">
+                        <input type="hidden" name="add_comment">
+                        <?php
+                        echo '<input type="hidden" name="lesson_id" value = "'.$lesson_id.'">';
+                        echo '<input type="hidden" name="user_id" value = "'.$_SESSION['id'].'">';
+                        ?>
+
                         <div class="form-group">
                             <h4>Leave a comment</h4>
-                            <label for="message">Message</label>
-                            <textarea name="msg" id=""msg cols="30" rows="5" class="form-control" style="background-color: white;"></textarea>
+                            <textarea name="message" id=""msg cols="30" rows="5" class="form-control" style="background-color: white;"></textarea>
                         </div>
                         <br>
 
                         <div class="form-group">
-                            <button type="button" id="post" class="btn" style="background-color: white">Post Comment</button>
+                            <input type="submit" id="post" value="Post Comment" class="btn" style="background-color: white">
                         </div>
                     </form>
                 </div>

@@ -84,5 +84,21 @@ if(!isset($_SESSION))
             $sql = $this->connect()->prepare("DELETE FROM notes WHERE id = ?");
             $sql->execute(array($id));
         }
+        public function Get_Comments($lesson_id){
+            $sql = $this->connect()->prepare("SELECT comment_id,comment,user_id,date,lesson_id,users.name,users.surname FROM comments 
+            join users on comments.user_id = users.id
+            WHERE lesson_id = ?;");
+            $sql->execute(array($lesson_id));
+            $comment = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($comment,$sql);
+        }
+        public function Add_Comment($comment,$lesson_id,$user_id){
+            $sql = $this->connect()->prepare("INSERT INTO comments (`comment`, `lesson_id`,`user_id`) VALUES (?, ?, ?)");
+            $sql->execute(array($comment,$lesson_id,$user_id));
+        }
+        public function Delete_Comment($id){
+            $sql = $this->connect()->prepare("DELETE FROM comments WHERE comment_id = ?");
+            $sql->execute(array($id));
+        }
     }
 ?>
