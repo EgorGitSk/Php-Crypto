@@ -8,15 +8,19 @@ Tasks:
 
 3.Contact Form + 
 
-4.Modify main page data +/-
+4.Modify main page data +
 
-5. Admin page +/-
+5. Admin page +
 
 6.Add +, Delete users+, add/delete data to prices table +
 
 7.Modify,Add course sections, lessons
 
+8. User add/delete notes
 
+9. User leave comments under lessons and delete
+
+10. User reply to comments
 
 #Create Tables
 

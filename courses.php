@@ -26,9 +26,9 @@ if(isset($_SESSION['lesson_id'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
     <title></title>
     <style>
         .open-button {
@@ -218,14 +218,6 @@ if(isset($_SESSION['lesson_id'])){
             echo '<div class="description-p"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ut voluptate deserunt maxime aliquid ullam ducimus, provident doloribus aspernatur assumenda atque odit! Nemo repellat nisi dolorem ipsum unde tempore, tempora ducimus placeat aspernatur voluptatem laborum, odit quam. Consequatur, perspiciatis nulla quia porro corrupti voluptates adipisci laboriosam consequuntur neque earum? Veniam?</p></div>';
         }
         ?>
-        <div class="description"><p>Requirements</p></div>
-        <ul>
-            <li><i class="fas fa-check"></i>Any computer will work: Windows, macOS or Linux</li>
-            <li><i class="fas fa-check"></i>Wallet</li>
-            <li><i class="fas fa-check"></i>Accounts</li>
-
-        </ul>
-    </div>
     <section>
         <div class="container">
             <div class="row">
@@ -245,15 +237,26 @@ if(isset($_SESSION['lesson_id'])){
                         for($i = 0; $i < $sql->rowCount(); $i++){
                             echo '<div class="comment mt-4 text-justify"> ';
                             echo '<h4>'. $comment[$i]["name"] . " " . $comment[$i]["surname"] .'</h4> ';
-                            echo '<span>-'.$comment[$i]["date"].'</span>';
+                            echo '<span>-'.$comment[$i]["date"]. " Replies: ". $comment[$i]["amount"].'</span>';
                             echo '<br>';
                             echo '<p>'. $comment[$i]["comment"] .'</p>';
                             echo '</div>';
+                            echo '<form action="reply.php" method="get" style="display: inline;">';
+                            echo '<input type="hidden" name="reply_comment">';
+                            echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]['comment_id'].'">';
+                            echo '<input type="submit"  value="Reply" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
+                            echo '</form>';
                             if($_SESSION['id'] == $comment[$i]["user_id"] || $_SESSION['admin'] == 1){
-                                echo '<form action="includes/comments.inc.php" method="post">';
+                                echo '<form action="includes/comments.inc.php" method="post" style="display: inline;>';
                                 echo '<input type="hidden" name="delete_comment">';
+                                echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]["comment_id"].'">';
+                                echo '<input type="submit"  value="Delete Comment" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
+                                echo '</form>';
+                            }else{
+                                echo '<form action="includes/comments.inc.php" method="post" style="display: inline;>';
+                                echo '<input type="hidden" name="report_comment">';
                                 echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]['comment_id'].'">';
-                                echo '<input type="submit" id="post" value="Delete Comment" class="btn" style="background-color: white">';
+                                echo '<input type="submit"  value="Report Comment" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
                                 echo '</form>';
                             }
                         }

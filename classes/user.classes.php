@@ -85,16 +85,38 @@ if(!isset($_SESSION))
             $sql->execute(array($id));
         }
         public function Get_Comments($lesson_id){
-            $sql = $this->connect()->prepare("SELECT comment_id,comment,user_id,date,lesson_id,users.name,users.surname FROM comments 
+            $sql = $this->connect()->prepare("SELECT count(replies.comment_id) as amount,comments.comment_id,comment,comments.user_id,comments.date,lesson_id,users.name,users.surname FROM comments 
             join users on comments.user_id = users.id
-            WHERE lesson_id = ?;");
+            left join replies on replies.comment_id = comments.comment_id
+            WHERE lesson_id = ?
+            group by comments.comment_id;");
             $sql->execute(array($lesson_id));
             $comment = $sql->fetchAll(PDO::FETCH_ASSOC);
             return array($comment,$sql);
         }
+        public function Get_Comment($comment_id){
+            $sql = $this->connect()->prepare("SELECT comment,comments.date,comments.comment_id as comment_id,users.name,users.surname FROM comments 
+join users on comments.user_id = users.id
+WHERE comments.comment_id =  ?;");
+            $sql->execute(array($comment_id));
+            $comment = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($comment,$sql);
+        }
+        public function Get_Replies($lesson_id){
+            $sql = $this->connect()->prepare("SELECT reply,date,users.name,users.surname FROM replies 
+            join users on replies.user_id = users.id
+            WHERE comment_id = ?;");
+            $sql->execute(array($lesson_id));
+            $replies = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return array($replies,$sql);
+        }
         public function Add_Comment($comment,$lesson_id,$user_id){
             $sql = $this->connect()->prepare("INSERT INTO comments (`comment`, `lesson_id`,`user_id`) VALUES (?, ?, ?)");
             $sql->execute(array($comment,$lesson_id,$user_id));
+        }
+        public function Add_Reply($reply,$comment_id,$user_id){
+            $sql = $this->connect()->prepare("INSERT INTO replies (`reply`, `comment_id`,`user_id`) VALUES (?, ?, ?)");
+            $sql->execute(array($reply,$comment_id,$user_id));
         }
         public function Delete_Comment($id){
             $sql = $this->connect()->prepare("DELETE FROM comments WHERE comment_id = ?");

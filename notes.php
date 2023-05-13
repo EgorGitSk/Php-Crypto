@@ -77,9 +77,8 @@ if($_SESSION['popup'] == true){
         </div>
     </div>
 </div>
-
+<h3><a href="courses.php" style=" display: inline-block;position: sticky;left: 20px ;margin-top: 20px; color: white;">Go back</a></h3>
 <div class="wrapper">
-
     <a href="notes.php?show=true">
     <li class="add-box">
         <div class="icon"><i class="uil uil-plus" ></i></div>
