@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,22 +19,26 @@ session_start();
 </head>
 <body>
     <div class="wrapper bg-black mt-sm-5">
-      <form method="POST" action="includes/user.inc.php" enctype="multipart/form-data">
-        <h4 class="pb-4 border-bottom">Account <?php echo $_SESSION["name"] . " " . $_SESSION["surname"] ?> Settings</h4>
+      <form method="post" action="includes/user.inc.php">
+        <h4 class="pb-4 border-bottom">Account <?php echo $_SESSION["name"] . " " . $_SESSION["surname"]?> Settings </h4>
 
         <div class="py-2">
             <div class="row py-2">
                 <div class="col-md-6"><input type="email" name="email" class="bg-light form-control" placeholder="Email"></div>
-
-
-
-                <div class="error" style="color: red;">Email is taken</div>
+                <?php
+                if (isset($_SESSION['emailistaken'])) {
+                    echo '<div class="error">Email is already taken</div>';
+                }
+                ?>
             </div>
             <div class="row py-2">
 
                 <div class="col-md-6 pt-md-0 pt-3"><input type="text" name="name" class="bg-light form-control" placeholder="Name"></div><br>
-
-                <div class="error" style="color: red;">Username is taken</div>
+                <?php
+                if (isset($_SESSION['nameistaken']) && $_SESSION['nameistaken'] == true) {
+                    echo '<div class="error">Name is already taken</div>';
+                }
+                ?>
             </div>
             <div class="row py-2">
                 <div class="col-md-6 pt-md-0 pt-3"><input type="text" name="surname" class="bg-light form-control" placeholder="Surname"></div>
@@ -51,3 +56,7 @@ session_start();
     </div>
 </body>
 </html>
+<?php
+unset($_SESSION['nameistaken']);
+unset($_SESSION['emailistaken']);
+?>

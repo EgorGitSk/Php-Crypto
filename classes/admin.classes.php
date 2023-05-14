@@ -121,8 +121,18 @@ class Admin extends Db{
         $sql->execute(array($name,$text,$image));
     }
     public function Change_Learning($name,$text,$id){
-        $sql = $this->connect()->prepare("UPDATE learn SET `name` = ?,`text` = ? WHERE id = ?");
+        $sql = $this->connect()->prepare("UPDATE learn SET `name` = ?,`text` = ? WHERE `id` = ?");
         $sql->execute(array($name,$text,$id));
+    }
+    public function Delete_Image($id){
+        $sql = $this->connect()->prepare("SELECT * FROM learn where id = ?");
+        $sql->execute(array($id));
+        $lesson = $sql->fetchAll(PDO::FETCH_ASSOC);
+        unlink('../img/learn/'.$lesson[0]['image']);
+    }
+    public function Change_Image($image,$id){
+        $sql = $this->connect()->prepare("UPDATE learn SET `image` = ? WHERE id = ?");
+        $sql->execute(array($image,$id));
     }
     public function Delete_Learning($id){
         $sql = $this->connect()->prepare("SELECT * FROM learn where id = ?");

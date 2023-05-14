@@ -43,9 +43,10 @@ include_once "parts/nav.php";
         <thead class="thead-dark">
         <tr>
             <th scope="col">Id</th>
+            <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Text</th>
-            <th scope="col">Image</th>
+
             <th scope="col">Change</th>
             <th scope="col">Delete</th>
         </tr>
@@ -57,11 +58,22 @@ include_once "parts/nav.php";
         $sql = $prices[1];
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
+            echo '<th scope="row">'. $learn[$i]["id"] .'</th>';
+            echo '<td>';
+
+            echo '<form action="functions.php" method="post" enctype="multipart/form-data"> ';
+            echo '<input type="hidden" name="change_image">
+                  <input type="hidden" name="id" value="' . $learn[$i]["id"] . '">';
+            echo '<label for="imagge">';
+            echo '<img src="../img/learn/'.$learn[$i]["image"].'" width="200" height="200" alt="">';
+            echo '</label>
+                    <input type="file" id="imagge" name="image" style="display: none;">';
+            echo '<input type="submit" value="Change Image" class="btn btn-outline-success"></form></td>';
+
+
             echo '<form action="functions.php" method="post">';
-            echo '<th scope="row">'. $learn[$i]["id"] .'</th>>';
             echo '<td>'.'<input type="text" value="'.$learn[$i]["name"].'" name="name" size="50" placeholder="'.$learn[$i]["id"].'">'.'</td>';
             echo '<td>'.'<textarea name="text" cols="60" rows="5">'.$learn[$i]["text"].'</textarea>'.'</td>';
-            echo '<td>'.'<img src="../img/learn/'.$learn[$i]["image"].'" width="200" height="200" alt="">'.'</td>';
 
             echo '<td>
             <input type="hidden" name="change_learning">

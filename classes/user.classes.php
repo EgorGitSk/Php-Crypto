@@ -4,12 +4,15 @@ if(!isset($_SESSION))
     session_start();
 }
     class User extends db{
+
+
         public function ChangeName($name,$id){
             $sql = $this->connect()->prepare("SELECT * FROM users WHERE name = ?");
             $sql->execute(array($name));
             $check = $sql->fetchAll(PDO::FETCH_ASSOC);
             if(count($check) > 0) {
                 header("Location: ../account.php?error=nameistaken");
+                $_SESSION['nameistaken'] = true;
                 exit();
             }
             $sql = $this->connect()->prepare('UPDATE users SET name = ? WHERE id= ?;');
@@ -27,6 +30,7 @@ if(!isset($_SESSION))
             $check = $sql->fetchAll(PDO::FETCH_ASSOC);
             if(count($check) > 0) {
                 header("Location: ../account.php?error=emailistaken");
+                $_SESSION['emailistaken'] = true;
                 exit();
             }
             $sql = $this->connect()->prepare('UPDATE users SET email = ? WHERE id= ?;');

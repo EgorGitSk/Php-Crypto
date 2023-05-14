@@ -15,17 +15,17 @@ if(isset($_POST['submit'])){
     $errors = array();
     if(!empty($name)){
         $change->ChangeName($name,$id);
-
+        header("Location: ../account.php?error=none");
     }
     if(!empty($surname)){
         $change->ChangeSurName($surname,$id);
-
+        header("Location: ../account.php?error=none");
     }
     if(!empty($email)){
         $change->ChangeEmail($email,$id);
-
+        header("Location: ../account.php?error=none");
     }
-    header("Location: ../index.php?error=none");
+
 }
 
 ?>

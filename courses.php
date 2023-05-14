@@ -150,13 +150,13 @@ if(isset($_SESSION['lesson_id'])){
                 for($i = 0; $i < $sql->rowCount(); $i++){
 
                     if ($sl[$i]['section_title'] != $current_section) {
-
-                        echo '<span class="nav__name">'.$sl[$i]['section_title'].'</span>';
+                        echo '<div class="nav__link active">';
+                        echo '<i class="fa fa-caret-down"></i><span class="nav__name">'.$sl[$i]['section_title'].'</span></div>';
                         $current_section = $sl[$i]['section_title'];
 
 
                     }
-                    echo '<a href="parts/lesson_redirect.php?lesson_id='.$sl[$i]['lesson_id'].'" class="nav__dropdown-item" id="les1-1"> <i class="fas fa-dot-circle"></i> '.$sl[$i]['lesson_title'].'</a>';
+                    echo '<a href="parts/lesson_redirect.php?lesson_id='.$sl[$i]['lesson_id'].'" class="nav__dropdown-item" id="les1-1"> <i class="fa fa-long-arrow-right"></i> '.$sl[$i]['lesson_title'].'</a>';
                 }
                 ?>
                 <a href="contact.php" class="nav__link active">
@@ -252,12 +252,6 @@ if(isset($_SESSION['lesson_id'])){
                                 echo '<input type="hidden" name="delete_comment">';
                                 echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]["comment_id"].'">';
                                 echo '<input type="submit"  value="Delete Comment" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
-                                echo '</form>';
-                            }else{
-                                echo '<form action="includes/comments.inc.php" method="post" style="display: inline;>';
-                                echo '<input type="hidden" name="report_comment">';
-                                echo '<input type="hidden" name="comment_id" value = "'.$comment[$i]['comment_id'].'">';
-                                echo '<input type="submit"  value="Report Comment" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
                                 echo '</form>';
                             }
                         }
