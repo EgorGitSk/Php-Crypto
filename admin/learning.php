@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     include "../classes/db.classes.php";
-    include "../classes/admin.php";
+    include "../classes/admin.classes.php";
     $admin = new Admin();
 }else {
     header("Location: index.php?error=adminonly");
@@ -25,23 +25,9 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     </style>
 </head>
 <body>
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link" href="../index.php">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="faq.php">FAQ</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="answers.php">Answers</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="learning.php">Learning</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="lessons.php">Lessons</a>
-    </li>
-</ul>
+<?php
+include_once "parts/nav.php";
+?>
 <div class="jumbotron">
     <br>
     <h2> Modify Learning table</h2>

@@ -1,19 +1,10 @@
 <?php
 include '../classes/db.classes.php';
-include '../classes/admin.php';
+include '../classes/admin.classes.php';
 include "../classes/signup.classes.php";
 include "../classes/signup-contr.classes.php";
 $change = new Admin();
-if(isset($_POST['delete_user'])){
-    $id = $_POST['id'];
-    $change->Delete_User($id);
-    header("Location: ./admin.php?error=userdeleted");
-}
-if(isset($_POST['delete_price'])){
-    $id = $_POST['id'];
-    $change->Delete_Price($id);
-    header("Location: ./admin.php?error=pricedeleted");
-}
+
 if(isset($_POST['change_price'])){
     $course = $_POST['course'];
     $investing = $_POST['investing'];
@@ -97,11 +88,7 @@ if(isset($_POST['add_learning']) && isset($_FILES['image'])){
         header("Location: ./learning.php?error=error");
     }
 }
-if(isset($_POST['delete_learning'])){
-    $id = $_POST['id'];
-    $change->Delete_Learning($id);
-    header("Location: ./learning.php?error=learningdeleted");
-}
+
 if(isset($_POST['change_lesson'])){
     $id = $_POST['id'];
     $link = $_POST['link'];
@@ -110,11 +97,7 @@ if(isset($_POST['change_lesson'])){
     $change->Change_Lesson($title,$link,$content,$id);
     header("Location: ./lessons.php?error=lessonchanged");
 }
-if(isset($_POST['delete_lesson'])){
-    $id = $_POST['id'];
-    $change->Delete_Lesson($id);
-    header("Location: ./lessons.php?error=lessondeleted");
-}
+
 if(isset($_POST['add_lesson'])){
     $lesson_title = $_POST['lesson_title'];
     $link = $_POST['link'];
@@ -128,15 +111,37 @@ if(isset($_POST['add_section'])){
     $change->Add_Section($title);
     header("Location: ./lessons.php?error=sectionadded");
 }
-if(isset($_POST['delete_section'])){
-    $id = $_POST['id'];
-    $change->Delete_Section($id);
-    header("Location: ./lessons.php?error=sectiondeleted");
-}
+
 if(isset($_POST['change_section'])){
     $id = $_POST['id'];
     $title = $_POST['title'];
     $change->Change_Section($title,$id);
     header("Location: ./lessons.php?error=sectionchanged");
+}
+
+if(isset($_POST['delete_user'])){
+    $id = $_POST['user_id'];
+    $change->Delete_User($id);
+    header("Location: ./admin.php?error=userdeleted");
+}
+if(isset($_POST['delete_price'])){
+    $id = $_POST['id'];
+    $change->Delete_Price($id);
+    header("Location: ./admin.php?error=pricedeleted");
+}
+if(isset($_POST['delete_section'])){
+    $id = $_POST['id'];
+    $change->Delete_Section($id);
+    header("Location: ./lessons.php?error=sectiondeleted");
+}
+if(isset($_POST['delete_lesson'])){
+    $id = $_POST['id'];
+    $change->Delete_Lesson($id);
+    header("Location: ./lessons.php?error=lessondeleted");
+}
+if(isset($_POST['delete_learning'])){
+    $id = $_POST['id'];
+    $change->Delete_Learning($id);
+    header("Location: ./learning.php?error=learningdeleted");
 }
 ?>

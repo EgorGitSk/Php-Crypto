@@ -23,10 +23,17 @@ session_start();
 
         <div class="py-2">
             <div class="row py-2">
-                <div class="col-md-6"><input type="text" name="email" class="bg-light form-control" placeholder="Email"></div>
+                <div class="col-md-6"><input type="email" name="email" class="bg-light form-control" placeholder="Email"></div>
+
+
+
+                <div class="error" style="color: red;">Email is taken</div>
+            </div>
+            <div class="row py-2">
 
                 <div class="col-md-6 pt-md-0 pt-3"><input type="text" name="name" class="bg-light form-control" placeholder="Name"></div><br>
 
+                <div class="error" style="color: red;">Username is taken</div>
             </div>
             <div class="row py-2">
                 <div class="col-md-6 pt-md-0 pt-3"><input type="text" name="surname" class="bg-light form-control" placeholder="Surname"></div>

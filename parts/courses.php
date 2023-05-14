@@ -1,6 +1,6 @@
 <?php
 include_once "classes/db.classes.php";
-include_once "classes/admin.php";
+include_once "classes/admin.classes.php";
 $admin = new Admin();
 ?>
 <section class="course-price" id="price-section">

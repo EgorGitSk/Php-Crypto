@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     include "../classes/user.classes.php";
 
     $change = new User();
-
+    $errors = array();
     if(!empty($name)){
         $change->ChangeName($name,$id);
 
@@ -25,8 +25,6 @@ if(isset($_POST['submit'])){
         $change->ChangeEmail($email,$id);
 
     }
-
-
     header("Location: ../index.php?error=none");
 }
 

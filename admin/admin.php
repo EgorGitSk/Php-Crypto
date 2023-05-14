@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     include "../classes/db.classes.php";
-    include "../classes/admin.php";
+    include "../classes/admin.classes.php";
     $admin = new Admin();
 }else {
     header("Location: index.php?error=adminonly");
@@ -25,32 +25,18 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     </style>
 </head>
 <body>
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link" href="../index.php">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="faq.php">FAQ</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="answers.php">Answers</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="learning.php">Learning</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="lessons.php">Lessons</a>
-    </li>
-</ul>
+<?php
+include_once "parts/nav.php";
+?>
 <div class="jumbotron">
     <br>
     <h2>Modify Users table</h2>
     <form action="functions.php" method="post">
         <input type="hidden" name="add_user">
-        <input type="text" name="name" placeholder="Name">
-        <input type="text" name="surname" placeholder="Surname">
-        <input type="text" name="email" placeholder="Email">
-        <input type="text" name="password" placeholder="password">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="surname" placeholder="Surname" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="password" placeholder="password" required>
         <input type="submit" value="Add user">
     </form>
     <h2>Users table</h2>
@@ -80,11 +66,10 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
         echo '<td>'.$user[$i]["surname"] .'</td>';
         echo '<td>'.$user[$i]["email"] .'</td>';
         echo '<td><form action="functions.php" method="post">
-            <input type="hidden" name=delete_user">
-            <input type="hidden" name="delete">
-            <input type="hidden" name="id" value="' . $user[$i]["id"] . '">
+            <input type="hidden" name="delete_user">
+            <input type="hidden" name="user_id" value="' . $user[$i]["id"] . '">
             <input type="submit" value="Delete user" class="btn btn-outline-danger"></form></td>';
-
+        echo '</tr>';
         echo '</tr>';
     }
     ?>
@@ -95,11 +80,11 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
     <h2> Modify Prices table</h2>
     <form action="functions.php" method="post">
         <input type="hidden" name="add_price">
-        <input type="text" name="course" id="course" placeholder="course">
-        <input type="text" name="investing" id="investing" placeholder="investing">
-        <input type="text" name="mining" placeholder="mining">
-        <input type="text" name="portfolio" placeholder="portfolio">
-        <input type="text" name="price" placeholder="price">
+        <input type="text" name="course" id="course" placeholder="course" required>
+        <input type="text" name="investing" id="investing" placeholder="investing" required>
+        <input type="text" name="mining" placeholder="mining" required>
+        <input type="text" name="portfolio" placeholder="portfolio" required>
+        <input type="number" name="price" placeholder="price" required>
         <input type="submit" value="Add price">
     </form>
     <h2>Prices table</h2>

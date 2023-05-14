@@ -12,11 +12,6 @@ if(!isset($_SESSION))
                 header("Location: ../account.php?error=nameistaken");
                 exit();
             }
-
-            $check = $sql->fetchAll(PDO::FETCH_ASSOC);
-            if(count($check ) > 0) {
-                header("Location: ../account.php?error=nameistaken");
-            }
             $sql = $this->connect()->prepare('UPDATE users SET name = ? WHERE id= ?;');
             $sql->execute(array($name,$id));
             $_SESSION["name"] = $name;
@@ -33,10 +28,6 @@ if(!isset($_SESSION))
             if(count($check) > 0) {
                 header("Location: ../account.php?error=emailistaken");
                 exit();
-            }
-            $check = $sql->fetchAll(PDO::FETCH_ASSOC);
-            if(count($check ) > 0) {
-                header("Location: ../account.php?error=emailistaken");
             }
             $sql = $this->connect()->prepare('UPDATE users SET email = ? WHERE id= ?;');
             $sql->execute(array($email,$id));

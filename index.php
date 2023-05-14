@@ -35,9 +35,6 @@ include_once "parts/header.php";
             include_once "parts/learning.php";
         ?>
         <?php
-            include_once "parts/testimonials.php";
-        ?>
-        <?php
             include_once "parts/courses.php";
         ?>
         <?php

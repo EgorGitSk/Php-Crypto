@@ -6,7 +6,7 @@
         $email = $_POST['email'];
         $message = $_POST['message'];
         include "../classes/db.classes.php";
-        include "../classes/contact.php";
+        include "../classes/contact.classes.php";
         $send = new ContactForm();
         $send->SendMessage($user_id,$name,$email,$message);
 

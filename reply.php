@@ -116,14 +116,14 @@ if(isset($_GET['reply_comment'])){
                         echo '<input type="hidden" name="comment_id" value = "'.$reply[$i]["comment_id"].'">';
                         echo '<input type="submit"  value="Delete Reply" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
                         echo '</form>';
-                    }else{
+                    }
                         echo '<form action="includes/comments.inc.php" method="post" style="display: inline;>';
                         echo '<input type="hidden" name="report_reply">';
                         echo '<input type="hidden" name="reply_id" value = "'.$reply[$i]["reply_id"].'">';
                         echo '<input type="hidden" name="comment_id" value = "'.$reply[$i]["comment_id"].'">';
                         echo '<input type="submit"  value="Report Comment" class="btn" style="background-color: white; display: inline; margin-right: 20px;">';
                         echo '</form>';
-                    }
+
                echo '</div>  ';
                 }
                 ?>
