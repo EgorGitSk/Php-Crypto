@@ -109,12 +109,12 @@ include_once "parts/nav.php";
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
-            echo '<th scope="row">'. $price[$i]["id"] .'</th>>';
+            echo '<th scope="row">'. $price[$i]["id"] .'</th>';
             echo '<td>'.'<input type="text" value="'.$price[$i]["course"].'" name="course" size="50" placeholder="'.$price[$i]["course"].'">'.'</td>';
             echo '<td>'.'<input type="text" value="'.$price[$i]["investing"].'" name="investing" size="5" placeholder="'.$price[$i]["investing"].'">'.'</td>';
             echo '<td>'.'<input type="text" value="'.$price[$i]["mining"].'" name="mining" size="5" placeholder="'.$price[$i]["mining"].'">'.'</td>';
             echo '<td>'.'<input type="text" value="'.$price[$i]["portfolio"].'" name="portfolio" size="5" placeholder="'.$price[$i]["portfolio"].'">'.'</td>';
-            echo '<td>'.'<input type="text" value="'.$price[$i]["price"].'" name="price" size="5" placeholder="'.$price[$i]["price"].'">'.'</td>';
+            echo '<td>'.'<input type="number" value="'.$price[$i]["price"].'" name="price" size="5" placeholder="'.$price[$i]["price"].'">'.'</td>';
 
 
             echo '<td>

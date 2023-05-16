@@ -64,16 +64,16 @@ include_once "parts/nav.php";
             echo '<form action="functions.php" method="post" enctype="multipart/form-data"> ';
             echo '<input type="hidden" name="change_image">
                   <input type="hidden" name="id" value="' . $learn[$i]["id"] . '">';
-            echo '<label for="imagge">';
+            echo '<label for="'. $learn[$i]["id"] .'">';
             echo '<img src="../img/learn/'.$learn[$i]["image"].'" width="200" height="200" alt="">';
             echo '</label>
-                    <input type="file" id="imagge" name="image" style="display: none;">';
+                    <input type="file" id="'. $learn[$i]["id"] .'" name="image" style="display:none;">';
             echo '<input type="submit" value="Change Image" class="btn btn-outline-success"></form></td>';
 
 
             echo '<form action="functions.php" method="post">';
             echo '<td>'.'<input type="text" value="'.$learn[$i]["name"].'" name="name" size="50" placeholder="'.$learn[$i]["id"].'">'.'</td>';
-            echo '<td>'.'<textarea name="text" cols="60" rows="5">'.$learn[$i]["text"].'</textarea>'.'</td>';
+            echo '<td>'.'<textarea name="text" cols="50" rows="5">'.$learn[$i]["text"].'</textarea>'.'</td>';
 
             echo '<td>
             <input type="hidden" name="change_learning">

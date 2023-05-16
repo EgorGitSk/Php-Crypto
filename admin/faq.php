@@ -56,7 +56,7 @@ include_once "parts/nav.php";
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
-            echo '<th scope="row">'. $faq[$i]["id"] .'</th>>';
+            echo '<th scope="row">'. $faq[$i]["id"] .'</th>';
             echo '<td>'.'<input type="text" value="'.$faq[$i]["name"].'" name="name" size="50" placeholder="'.$faq[$i]["id"].'">'.'</td>';
             echo '<td>'.'<textarea name="text" cols="60" rows="5">'.$faq[$i]["text"].'</textarea>'.'</td>';
 

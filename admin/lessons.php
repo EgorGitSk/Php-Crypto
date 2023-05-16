@@ -54,7 +54,7 @@ include_once "parts/nav.php";
         for($i = 0; $i < $sql->rowCount(); $i++){
             echo "<tr>";
             echo '<form action="functions.php" method="post">';
-            echo '<th scope="row">'. $section[$i]["id"] .'</th>>';
+            echo '<th scope="row">'. $section[$i]["id"] .'</th>';
             echo '<td>'.'<textarea name="title" cols="40">'.$section[$i]["title"].'</textarea>'.'</td>';
             echo '<td>
             <input type="hidden" name="change_section">
