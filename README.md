@@ -14,13 +14,13 @@ Tasks:
 
 6.Add +, Delete users+, add/delete data to prices table +
 
-7.Modify,Add course sections, lessons
+7.Modify,Add course sections, lessons+
 
-8. User add/delete notes
+8. User add/delete notes+
 
-9. User leave comments under lessons and delete
+9. User leave comments under lessons and delete+
 
-10. User reply to comments
+10. User reply to comments+
 
 #Create Tables
 
